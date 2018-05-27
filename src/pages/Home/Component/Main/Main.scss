@@ -1,0 +1,53 @@
+@import "src/style/index";
+
+
+.i-main{
+  .header{
+    .header-content{
+      position:fixed;
+      top:0;
+      right:0;
+      left:0;
+      z-index:100;
+    }
+    &:after{
+      content:"";
+      display:block;
+      height:r(104);
+      width:100%;
+    }
+  }
+	.custom-tabs{
+    height:r(40);
+    padding-bottom:1px;
+    text-align:center;
+    background-color:#fff;
+    @include borderBottom;
+    @include flex;
+    .tab-item{
+      @include flex-w;
+      line-height:r(40);
+      font-size:r(15);
+      .tab-item-link{
+        position:relative;
+        display:inline-block;
+        padding:0 r(15);
+        color:$base-font-color;
+        &:before{
+          content:"";
+          position:absolute;
+          bottom:0;
+          left:r(3);
+          right:r(3);
+          border-bottom:r(2) solid transparent;
+        }
+        &.active:before{
+          color:$base-main-color;
+          border-color:$base-main-color;
+        }
+      }
+      
+    }
+  }
+
+}

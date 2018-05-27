@@ -1,0 +1,54 @@
+@import "src/style/index";
+
+@keyframes rotate{
+	0%{
+		transform:rotate(0deg);
+	}
+	50%{
+		transform:rotate(5deg);
+	}
+	100%{
+		transform:rotate(-5deg);
+	}
+}
+.cm-nav-tit{
+	background-color:$base-main-color;
+	padding:0 r(12);
+	min-height:r(64);
+	@include flex-xy;
+	.svg-music-logo{
+		width:r(142);
+		height:r(25);
+	}
+	.flex{
+		@include flex-w;
+		& + .flex{
+			text-align:right;
+			/* a{
+				color:#fff;
+				&::before{border-radius: 50px;border-color:#fff;}
+			} */
+		}
+	}
+	.github-row{
+		position:relative;
+		&:after{
+			content:"";
+			position:absolute;
+			width:r(1);
+			height:r(22);
+			right:r(17);
+			background:#fff;
+			top:r(-22);
+		}
+	}
+	.svg-github{
+		width:r(35);
+		height:r(35);
+		border:1px solid #fff;
+		border-radius:50%;
+		box-shadow:0 0 6px rgba(255,255,255,.8);
+		padding:1px;
+		animation:rotate 4s alternate infinite;
+	}
+}

@@ -1,0 +1,23 @@
+@import "src/style/app";
+
+.app-container {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0px auto;
+  overflow: hidden;
+}
+body.f3f2f7{
+  background-color: #f3f2f7;
+}
+body.fff{
+  background-color: #fff;
+}
+
+@media screen and (min-width: 600px) {
+  .app-container {
+    max-width: 750px;
+  }
+}

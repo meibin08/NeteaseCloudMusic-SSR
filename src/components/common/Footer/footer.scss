@@ -1,0 +1,37 @@
+@import "src/style/index";
+.cm-footer{
+	@include images($url:'./images/footer_bg.png',$size:(100% auto));
+	background-position: bottom;
+	padding:r(49) r(12) r(26);
+	text-align:center;
+	.footer-logo{
+		width:r(230);
+		margin:0 auto r(15);
+		.svg-logo{width:r(230);height:r(44)}
+	}
+	.ohter-info{
+		@include flex;
+		justify-content:space-between;
+		padding:0 r(20) r(15);
+		.custom-button{
+			display:inline-block;
+			color:$base-main-color;
+			line-height:r(38);
+			height:r(38);
+			font-size:r(15);
+			background-color:rgba(255,255,255,.5);
+			padding:0 r(28);
+			border-radius:20px;
+			@include borderRadius($color:$base-main-color,$radius:40px);
+			transition:box-shadow .3s;
+			&:active{
+				box-shadow:0 3px 5px rgba(212,60,51,.3);
+			}
+		}
+	}
+	.foot-caveat{
+		font-size:r(12);
+		color:#999;
+    text-decoration: underline;
+	}
+}

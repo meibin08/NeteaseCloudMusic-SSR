@@ -1,0 +1,18 @@
+@import "src/style/index";
+
+.panel-nav{
+	padding:r(20) 0 r(14) r(10);
+	position:relative;
+	font-size:r(17);
+	font-weight:normal;
+	&:after{
+		content:"";
+		position:absolute;
+		left:0;
+		top:50%;
+		margin-top:r(-7);
+		width:r(2);
+		height:r(18);
+		background:$base-main-color;
+	}
+}
