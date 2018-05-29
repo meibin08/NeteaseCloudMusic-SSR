@@ -1,21 +1,15 @@
 
 /*
  * @authors :Bin Mei
- * @date    :2017-04-26
- * @description：redux示例 - 各模块勿重复相同的函数名；
+ * @date    :2017-05-26
+ * @description：action对外输出 - 各模块勿重复相同的函数名；
  */
 
 import homeIndex from "./Home/index";
-// import homeStart from "./Home/start";
-// import homeFriends from "./Home/friends";
-// import homeList from "./Home/list";
-// import introIndex from "./Intro/index";
-// import handlerIndex from "./Handler/index";
+import homeHot from "./Home/hot";
 
 let actions = Object.assign({},
 	homeIndex,
-	// homeStart,homeFriends,homeList,
-	// introIndex,
-	// handlerIndex
+	homeHot
 	);
 export default actions;

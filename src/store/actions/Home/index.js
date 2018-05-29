@@ -5,7 +5,6 @@
  */
 
 import { fetchJson } from 'src/utils/fetch';
-import { browserHistory } from 'react-router';
 import {StaticToast} from 'src/components/common';
 export const SERVER_HOME_PLAYLIST="SERVER_HOME_PLAYLIST";
 export const HOME_NEWSONG="HOME_NEWSONG";
@@ -20,14 +19,14 @@ let home =  {
 				// url:"https://easy-mock.com/mock/5af54595dac0b7495244d48d/sayListen/list2",
 				// url:"http://music.163.com/weapi/personalized/playlist",
 				data : {
-					limit:30,
-					offset: 0,
-					total: true,
-					n: 1000,
+					limit:6,
+					offset: 10,
+					total: false,
+					n: 6,
 					csrf_token: ""
 				},
 			}).then(res=>{
-				// console.log(1234,res.code)
+				// console.log(1234,res)
 				if(res.code == 200){
 					let {result}=res;
 					dispatch({
@@ -61,7 +60,6 @@ let home =  {
 				}
 			});
 		};
-
 	}
 };
 export default home;

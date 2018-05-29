@@ -32,5 +32,17 @@ module.exports = [
 			onEnter: () => bridge.doAction('setTitle', { title: '热歌榜' })
 		}
 	},
+	{
+		path: 'search', //搜索
+		component:Main,
+		indexRoute: {
+			getComponent(location, cb) {
+				require.ensure([], (require) => {
+					cb(null, require('./Search'));
+				});
+			},
+			onEnter: () => bridge.doAction('setTitle', { title: '搜索' })
+		}
+	},
 ]
 	

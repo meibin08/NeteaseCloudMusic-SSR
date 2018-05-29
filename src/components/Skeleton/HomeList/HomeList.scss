@@ -1,0 +1,43 @@
+@import "src/style/index";
+
+.list-song-skeleton{
+  padding-left:r(12);
+  .sk-song-item{
+    @include flex;
+    padding:r(6) 0;
+    margin-bottom:r(6);
+  }
+  .row{
+    @include flex-w;
+    &:before{
+      position:relative;
+      content:"";
+      display:block;
+      height:r(22);
+      background:#eff3f7;
+    }
+    &:after{
+      content:"";
+      display:block;
+      height:r(12);
+      background:#eff3f7;
+      margin-top:14px;
+    }
+  }
+  .play{
+    padding:0 r(16);
+    &:after{
+      content:"";
+      display:block;
+      position:relative;
+      border-radius:50%;
+      left:50%;
+      top:50%;
+      width:r(24);
+      height:r(24);
+      margin:r(-12) 0 0 r(-12);
+      background:#eff3f7;
+    }
+  }
+
+}

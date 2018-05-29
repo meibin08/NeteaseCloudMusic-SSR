@@ -12,15 +12,16 @@ let bridge = {
     browserHistory.goBack()
   },
   doAction: (action, extra, callBack) => {
-    __DEBUG__ && console.info(`bridge.doAction(action, extra, callBack)`, action, extra, callBack)
+    __DEBUG__ && console.info(`bridge.doAction(action, extra, callBack)`, action, extra, callBack);
+    if(!__CLIENT__){return;};
     switch (action) {
       case 'setTitle':
         if (isFromWeixin()) {
           wechatSetTitle(extra.title);
         } else {
-          // document.title = extra.title;
+          document.title = extra.title;
         }
-        // document.body.className = extra.class||"fff";
+        document.body.className = extra.class||"fff";
         break;
       default:
       

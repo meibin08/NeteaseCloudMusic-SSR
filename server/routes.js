@@ -15,11 +15,10 @@ function getReduxPromise(props, store) {
         Promise.resolve();
 }
 
-
 module.exports = function (app) {
 
   
-
+  app.get('/',(req, res)=>res.redirect("/music/song"));
   app.get('/music/*', function (req, res, next) {
     // const history = createMemoryHistory();
     const store = configureStore();
@@ -49,7 +48,6 @@ module.exports = function (app) {
             // next()
         }
     });
-    // res.render('index');
   });
 
 };

@@ -11,13 +11,22 @@ const routes = {
     childRoutes: [
       ...Home_route,
       {
+        path: 'test',
+        getComponent(nextState, callback) {
+          require.ensure([], require => {
+              callback(null, require('./Test'))
+          })
+        }
+      },
+      {
         path: '*',
         getComponent(nextState, callback) {
           require.ensure([], require => {
               callback(null, require('./NotFoundPage'))
           })
+        }
       }
-    }]
+    ]
   }]
 }
 

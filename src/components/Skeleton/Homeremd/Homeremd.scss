@@ -1,0 +1,34 @@
+@import "src/style/index";
+
+.recommend-skeleton{
+  .sk-item{
+    float:left;
+    width:33.3%;
+    padding-bottom:r(15);
+    &:nth-child(3n+2){
+      padding-left:3px;
+      padding-right:3px;
+    }
+  }
+  .square{
+    background:$skeleton-color1;
+    width:100%;
+    height:r(122.88);
+    position:relative;
+    &:after{
+      content:"";
+      position:absolute;
+      right:r(6);
+      top:r(10);
+      left:r(6);
+      height:r(8);
+      background:#eff3f7;
+    }
+  }
+  .line{
+    height:r(12);
+    background:$skeleton-color1;
+    margin-top:r(9);
+  }
+
+}
