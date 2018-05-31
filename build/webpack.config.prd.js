@@ -94,7 +94,8 @@ config.plugins.push(new webpack.DefinePlugin({
     NODE_ENV: JSON.stringify("production")
   },
   __DEBUG__: false,
-  __CLIENT__: true
+  __CLIENT__: true,
+  __STATIC__:false
 }));
 
 /*

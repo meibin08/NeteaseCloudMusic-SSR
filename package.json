@@ -9,6 +9,7 @@
     "clean": "rm -rf assets ",
     "server": "webpack --progress --colors --config build/webpack.server.config.js",
     "build:prd": "set WEBPACK_ENV=production && webpack --config build/webpack.config.prd.js",
+    "build:static": "webpack --config build/webpack.config.static.js",
     "build": "npm run clean && npm run server && npm run build:prd"
   },
   "author": "Bin.Mei <meibin08@163.com>,QQ群:386485473",

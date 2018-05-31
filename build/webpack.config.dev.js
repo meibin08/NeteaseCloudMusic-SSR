@@ -42,6 +42,7 @@ config.plugins.push(new webpack.DefinePlugin({
   },
   __DEBUG__: true,
   __CLIENT__: true,
+  __STATIC__:false
 }));
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
