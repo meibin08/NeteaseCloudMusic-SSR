@@ -11,10 +11,10 @@ var config = {
     index: './src/root.js',
   },
   output: {
-    path: path.resolve(__dirname, '../assets'),
+    path: path.resolve(__dirname, '../assets/client'),
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
-    publicPath: '/react_ssr/'
+    publicPath: '/client/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss','.json','.css'],

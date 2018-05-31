@@ -37,7 +37,7 @@ class Main extends Component{
 						</ul>
 					</div>
 					</header>
-				<div style={{minHeight:358}}>{this.props.children}</div>
+				<div className="i-children" style={{minHeight:358}}>{this.props.children}</div>
 				<Footer/>
 			</section>
 		);

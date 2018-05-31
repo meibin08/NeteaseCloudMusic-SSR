@@ -10,7 +10,7 @@ import './Homeremd.scss';
 class Homeremd extends Component {
   
   render() {
-    let {len}=this.props;
+    let {len=6}=this.props;
     let chunkArr = Array.from(new Array(len),(val,index)=>index+1);
     return (
       <ul className="recommend-skeleton">
@@ -18,7 +18,6 @@ class Homeremd extends Component {
         return (
           <li className="sk-item" key={v+"skeleton"}>
             <p className="square"></p>
-            <p className="line"></p>
             <p className="line"></p>
           </li>
         );

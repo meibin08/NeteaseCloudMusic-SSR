@@ -1,8 +1,4 @@
-// require("babel-register")({
-//     'presets': ["es2015", 'react', 'stage-3'],
-// });
-    
-// require('babel-polyfill');
+
 var express = require('express');
 var logger = require('morgan');
 var webpack = require('webpack');
@@ -14,9 +10,6 @@ var app = express();
 var compiler = webpack(config);
 
 require('../server/express')(app);
-app.use('/react_ssr',express.static(path.join(__dirname, '../assets')));//静态资源
-// app.use(express.static(config.root + '../assets'));
-
 app.use(webpackMiddleware(compiler, { 
 	noInfo: false,
 	publicPath: config.output.publicPath,
@@ -31,6 +24,8 @@ app.use(webpackMiddleware(compiler, {
 app.use(logger('dev'));
 app.use(webpackHotMiddleware(compiler));
 require('../server/server')(app);
-require('../assets/server')(app);
+app.get(/^(?!\/client)\/*/i, function (req, res, next) {
+  res.render('dev');
+});
 require('../server/error')(app);
 require('../bin/www')(app);

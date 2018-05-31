@@ -7,9 +7,11 @@
 
 import homeIndex from "./Home/index";
 import homeHot from "./Home/hot";
+import homeSearch from "./Home/search";
 
 let actions = Object.assign({},
 	homeIndex,
-	homeHot
+	homeHot,
+	homeSearch,
 	);
 export default actions;

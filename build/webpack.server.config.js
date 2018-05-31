@@ -4,14 +4,14 @@ var webpack = require('webpack');
 var ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: false,
   entry: {
-    server: ['./server/routes.js']
+    index: ['./server/routes.js']
   },
   output: {
-    path: path.resolve(__dirname, '../assets'),
+    path: path.resolve(__dirname, '../assets/server'),
     filename: '[name].js',
-    publicPath: '/react_ssr/',
+    publicPath: '/server/',
     libraryTarget: "commonjs2"
   },
   //keep node_module paths out of the bundle 将node_module路径保留在捆绑中 ,即不打包到代码内去

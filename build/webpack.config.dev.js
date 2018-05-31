@@ -48,6 +48,6 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // config.plugins.push(new HtmlWebpackPlugin({
 //   filename: path.resolve(__dirname, '../views/index.html'), //输出
 //   template: path.resolve(__dirname,"../src/views/index.html"),//输入
-//   // inject: false
+//   inject: false
 // }));
 module.exports = config;

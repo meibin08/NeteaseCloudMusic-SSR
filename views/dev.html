@@ -14,12 +14,13 @@
 		<link href="/client/css/index.css" rel="stylesheet">
   	<link rel="dns-prefetch" href="//s3.music.126.net"/>
   	<link rel="dns-prefetch" href="//p1.music.126.net"/>
+
 		<script>(window.__setFontSize__=function(){document.documentElement.style.fontSize = Math.min(640, Math.max(document.documentElement.clientWidth, 320)) / 320 * 14 + 'px'})()</script>
 	</head>
 	<body>
-		<div id="app" style="height: 100%;"><%- html %></div>
+		<div id="app" style="height: 100%;"></div>
     <script>
-        window.__initState__ = <%- reduxState %>
+        window.__initState__ = {};
     </script>
 		<script type="text/javascript" src="/client/js/vendors.js"></script>
 		<script type="text/javascript" src="/client/js/index.js"></script>

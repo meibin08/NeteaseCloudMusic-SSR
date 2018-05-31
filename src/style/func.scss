@@ -56,8 +56,9 @@
 @mixin borderColor($color:#ccc) {
   @include border(1, 1, 1, 1, $color);
 }
-@mixin borderRadius($width:1,$style:solid,$color:#ccc,$radius:2px) {
+@mixin borderRadius($width:1,$style:solid,$color:#ccc,$radius:0px) {
   position:relative;
+  border-radius:$radius;
     &:after{
        left:0px;
        top:0px;

@@ -5,9 +5,10 @@ var config = require('../server/config');
 
 var app = express();
 require('../server/express')(app);
-app.use('/react_ssr',express.static(path.join(__dirname, '../assets')));
-app.use(express.static(config.root + '../assets'));
+// app.use('/react_ssr',express.static(path.join(__dirname, '../assets')));
+app.use(express.static(config.root + '/assets'));
 require('../server/server')(app);
+require('../assets/server/index')(app);
 require('../server/error')(app);
 require('../bin/www')(app);
 console.log("当前环境-DEPLOY_ENV：",process.env.DEPLOY_ENV);

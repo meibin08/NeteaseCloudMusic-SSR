@@ -58,9 +58,7 @@ class Home extends Component{
 					})
 					}
 				</ul>
-
 				<PanelNav title="最新音乐"/>
-
 				<ul className="newsong">
 					{
 					!song_Already?<HomeList/>:_newsong.map((k,v)=>{

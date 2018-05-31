@@ -23,7 +23,7 @@ class Index extends Component {
       // FastClick.attach(document.body);
     }, 100);
      __DEBUG__ && loadJS('http://cdn.jsdelivr.net/eruda/1.0.5/eruda.min.js', ()=>{
-          eruda.init();
+          // eruda.init();
     });
 
   }

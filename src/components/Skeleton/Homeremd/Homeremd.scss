@@ -20,15 +20,24 @@
       position:absolute;
       right:r(6);
       top:r(10);
-      left:r(6);
+      left:40%;
       height:r(8);
-      background:#eff3f7;
+      background:$skeleton-color2;
     }
   }
   .line{
-    height:r(12);
-    background:$skeleton-color1;
-    margin-top:r(9);
+    height:r(42);
+    padding-top:r(5);
+    &:after,&:before{
+      content:"";
+      display:block;
+      background:$skeleton-color1;
+      height:r(10);
+      margin-top:r(8);
+    }
+    &:after{
+      width:60%;
+    }
   }
 
 }

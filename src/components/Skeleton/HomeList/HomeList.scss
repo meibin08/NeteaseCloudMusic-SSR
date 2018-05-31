@@ -4,8 +4,9 @@
   padding-left:r(12);
   .sk-song-item{
     @include flex;
-    padding:r(6) 0;
+    padding:r(6) 0 r(6) r(6);
     margin-bottom:r(6);
+    background: rgba(246, 247, 248, .2);
   }
   .row{
     @include flex-w;
@@ -14,6 +15,7 @@
       content:"";
       display:block;
       height:r(22);
+      width: 60%;
       background:#eff3f7;
     }
     &:after{

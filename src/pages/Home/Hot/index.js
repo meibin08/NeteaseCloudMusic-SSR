@@ -11,6 +11,8 @@ import classnames from 'classnames';
 import { Link ,browserHistory } from 'react-router';
 import { fetchJson } from 'src/utils/fetch';
 import {StaticToast,Svg} from 'src/components/common';
+import {HomeList} from 'src/components/Skeleton';
+
 import format from "src/utils/format";
 import actions from "src/store/actions";
 
@@ -46,7 +48,7 @@ class Hot extends Component{
 				</div>
 				<ul className="hot-list">
 				{
-					_hot.tracks.map((k,v)=>{
+					!_hot.hot_Already?<HomeList/>:_hot.tracks.map((k,v)=>{
 						let {id,name} = (k.al||{});
 						return (
 							<li className="li-row-item hot-item" key={id}>

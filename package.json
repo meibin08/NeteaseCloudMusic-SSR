@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node build/app.js",
-    "dev": "npm run server && node build/devServer.js",
+    "dev": "node build/devServer.js",
     "clean": "rm -rf assets ",
     "server": "webpack --progress --colors --config build/webpack.server.config.js",
     "build:prd": "set WEBPACK_ENV=production && webpack --config build/webpack.config.prd.js",
-    "build": "npm run clean && npm run build:prd"
+    "build": "npm run clean && npm run server && npm run build:prd"
   },
   "author": "Bin.Mei <meibin08@163.com>,QQ群:386485473",
   "license": "MIT",
