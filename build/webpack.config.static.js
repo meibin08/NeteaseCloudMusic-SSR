@@ -12,6 +12,7 @@ var PreloadWebpackPlugin = require('preload-webpack-plugin');
 var HtmlWebPackPlugin = require('html-webpack-plugin')
 
 
+config.output.publicPath = "/NeteaseCloudMusic-SSR/";
 config.plugins.push(new webpack.DefinePlugin({
   "process.env": {
     NODE_ENV: JSON.stringify("production")
@@ -33,9 +34,9 @@ config.plugins.push(new HtmlWebPackPlugin({
 　　removeComments:true, //移除HTML中的注释 
 　　collapseWhitespace:true //删除空白符与换行符
 },
-  template: path.resolve(__dirname,"../views/dev.html"),//输入
+  template: path.resolve(__dirname,"../src/views/temp.html"),//输入
   // inlineSource:  '.(js|css)',// 插入到html的css、js文件都要内联
-  inject: false //是否能注入内容到 输出 的页面去
+  // inject: false //是否能注入内容到 输出 的页面去
 }));
 // config.plugins.push(new HtmlWebpackInlineSourcePlugin());// 实例化内联资源插件
  //复制文件
