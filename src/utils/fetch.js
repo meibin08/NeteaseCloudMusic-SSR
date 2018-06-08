@@ -94,7 +94,6 @@ function resHandler(resData, options) {
 
 // 异常处理
 function errorHandler(error, options, status) {
-  // Loading(false);
   options.error && options.error(error);
   StaticToast.error(`网络异常，请稍后重试(${status})`)
   return Promise.reject(error);

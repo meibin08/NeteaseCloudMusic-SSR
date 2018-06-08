@@ -9,7 +9,7 @@ import Main from './Component/Main';
 
 module.exports = [
 	{
-		path: 'song', //推荐音乐
+		path: 'music', //推荐音乐
 		component:Main,
 		indexRoute: {
 			getComponent(location, cb) {

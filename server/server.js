@@ -36,6 +36,8 @@ module.exports = function (app) {
       changeOrigin: true
     });
   });
+  app.get('/',(req, res)=>res.redirect("/music")); //默认 / 开关重定向到 music页 dev|prd共用设置
+
   // app.get('/redux/*', function (req, res, next) {
   //   res.render('index');
   // });

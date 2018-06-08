@@ -1,0 +1,149 @@
+@import 'src/style/index';
+
+@keyframes circling {
+  0% {
+      transform: rotate(0deg)
+  }
+  to {
+      transform: rotate(1turn)
+  }
+}
+.song-play{
+	.song-bg{
+	    background-position: 50%;
+	    background-repeat: no-repeat;
+	    background-size: auto 100%;
+	    transform: scale(1.5);
+	    transform-origin: center top;
+	    position: fixed;
+	    left: 0;
+	    right: 0;
+	    top: 0;
+	    bottom:0;
+	    overflow: hidden;
+	    z-index: -1;
+	    transition: opacity .3s linear;
+	    background-image:url('http://music.163.com/api/img/blur/109951163322348446');
+	    &:after{
+	    	content:"";
+	    	position:absolute;
+	    	left:0;
+	    	right:0;
+	    	bottom:0;
+	    	top:0;
+	    	background-color:rgba(0,0,0,.4);
+	    }
+	}
+	.l-t-logo{
+		padding:r(12) 0 0 r(12);
+		.svg-default{
+			width:r(100);
+			height:r(20);
+		}
+	}
+	.s-play-chunk{
+		padding-bottom:r(25);
+	}
+	.needle{
+		position: absolute;
+		width: r(96);
+    height: r(137);
+    top: 0px;
+    left: 50%;
+    margin-left:r(-20);
+    @include images($url:"./images/needle.png",$size:(contain));
+    z-index: 3;
+	}
+	.s-p-box{
+		margin:r(50) auto 0;
+		position:relative;
+		width:r(296);
+		height:r(296);
+		overflow: hidden;
+		&:before,&:after{
+			position:absolute;
+			z-index:2;
+			content:"";
+			width:100%;
+			height:100%;
+			top:0;
+			left:0;
+		}
+		&:before{
+			z-index:1;
+			@include images($url:"./images/disc.png",$size:(100%));
+		}
+		&:after{
+			@include images($url:"./images/disc_light.png",$size:(100%));
+		}
+		.s-p-inner{
+			width:r(184);
+			height:r(184);
+			margin:r(56) auto 0;
+			@include images($url:"./images/disc_default.png",$size:(100%));
+			.singer-img{
+				width:100%;
+				height:100%;
+				border-radius:50%;
+
+			}
+		}
+		&.a-circling {
+			&:after,.s-p-inner{
+	    	animation:circling 20s infinite linear;
+			}
+		}
+		&.a-circling.z-pause {
+			&:after,.s-p-inner{
+		    animation-play-state: paused;
+			}
+			.s-play-btn{opacity: 1;}
+		}
+		.s-play-btn{
+			width:r(58);
+			height:r(58);
+			opacity:0;
+			position:absolute;
+			transform:translate(-50%,-50%);
+			left:50%;
+			top:50%;
+			transition:opacity .2s;
+			.svg-default{
+				width:r(58);
+				height:r(58);
+			}
+		}
+	}
+	.s-play-info{
+		padding:0 r(35);
+		h3{
+			font-size:r(18);
+			line-height:r(22);
+			@include ellipsis;
+			text-align:center;
+			color:#fefefe;
+			.song-autr{
+				color:rgba(255,255,255,.6);
+				font-size:r(16);
+			}
+		}
+		.s-play-lyrics{
+			overflow:hidden;
+			height:88px;
+			line-height:22px;
+			font-size:16px;
+			color:rgba(255,255,255,.6);
+			text-align:center;
+			margin-top:15px;
+			.lyrics-transform{
+				transition:transform .3s ease-out;
+				.lyrics-row{
+					margin-bottom:8px;
+				}
+				.active{color:rgba(255,255,255,1);}
+			}
+		}
+	}
+
+
+}

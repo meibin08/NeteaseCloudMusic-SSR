@@ -4,5 +4,10 @@
   width:r(39);
   height:r(41);
   vertical-align: middle;
-
+	&.c999{
+		fill:$base-color-999;
+	}
+	&.cfff{
+		fill:#fff;
+	}
 }

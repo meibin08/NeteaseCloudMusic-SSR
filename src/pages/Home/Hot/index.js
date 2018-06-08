@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import classnames from 'classnames';
 import { Link ,browserHistory } from 'react-router';
 import { fetchJson } from 'src/utils/fetch';
-import {StaticToast,Svg} from 'src/components/common';
+import {StaticToast,Svg,Piece} from 'src/components/common';
 import {HomeList} from 'src/components/Skeleton';
 
 import format from "src/utils/format";
@@ -49,18 +49,9 @@ class Hot extends Component{
 				<ul className="hot-list">
 				{
 					!_hot.hot_Already?<HomeList/>:_hot.tracks.map((k,v)=>{
-						let {id,name} = (k.al||{});
+						let {picUrl,pic_str,...other}=k.al;
 						return (
-							<li className="li-row-item hot-item" key={id}>
-								<Link className="li-row-link">
-									<p className={classnames("num",{"num-cred":v<3})}>{format.n(v+1)}</p>
-									<div className="li-row-flex">
-										<h5 className="name">{name} {k.alia[0]&&<span className="sgalia">({(k.alia[0]||'')})</span>}</h5>
-										<p className="brief">{!k.copyright?<Svg hash="svg-hot"/>:null}{format.songArtists(k.ar,k.name)}</p>
-									</div>
-									<p className="li-row-play-icon"><Svg hash="svg-play"/></p>
-								</Link>
-							</li>
+							<Piece item={{...other,id:k.id,blurPicUrl:picUrl,picId_str:pic_str,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={true} key={v}/>
 						);
 					})
 				}
@@ -69,13 +60,22 @@ class Hot extends Component{
 		);
 	}
 };
-
-function mapStateToProps(state){
+// <li className="li-row-item hot-item" key={id}>
+// 								<Link className="li-row-link">
+// 									<p className={classnames("num",{"num-cred":v<3})}>{format.n(v+1)}</p>
+// 									<div className="li-row-flex">
+// 										<h5 className="name">{name} {k.alia[0]&&<span className="sgalia">({(k.alia[0]||'')})</span>}</h5>
+// 										<p className="brief">{!k.copyright?<Svg hash="svg-hot"/>:null}{format.songArtists(k.ar,k.name)}</p>
+// 									</div>
+// 									<p className="li-row-play-icon"><Svg className="fff" hash="svg-play"/></p>
+// 								</Link>
+// 							</li>
+let mapStateToProps =(state)=>{
 	const {server_hot} = state.homeHot;
 	return {_hot:server_hot};
 }; 
 
-function mapDispatchToProps(dispatch){
+let mapDispatchToProps=(dispatch)=>{
 	return {
 		ACTIONS:bindActionCreators(actions,dispatch)
 	};

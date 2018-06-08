@@ -18,14 +18,14 @@ function getReduxPromise(props, store) {
 module.exports = function (app) {
 
   
-  app.get('/',(req, res)=>res.redirect("/music/song"));
-  app.get('/music/*', function (req, res, next) {
+  //不以client|server开头的请求，进入路由接收处理
+  app.get(/^(?!\/client|server)\/*/i,  (req, res, next) =>{
     // const history = createMemoryHistory();
     const store = configureStore();
     const routes = createRoutes(_routes);
     res.header("Access-Control-Allow-Origin", req.headers["origin"] || "*");
     match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
-    // console.log(error, redirectLocation, renderProps);
+    console.log(error, redirectLocation, renderProps);
         if (redirectLocation) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search);
         } else if (error) {

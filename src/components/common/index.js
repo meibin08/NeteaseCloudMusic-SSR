@@ -10,6 +10,7 @@ export Navigation from './Nav';
 export StaticToast from './Toast';
 export PanelNav from './PanelNav';
 export Footer from './Footer';
+export Piece from './Piece';
 
 
 

@@ -6,9 +6,11 @@ import configureStore from "src/store";
 import routes from './pages/routes';
 
 const Store = configureStore(window.__initState__);
+const __history__ = (!__STATIC__?browserHistory:hashHistory);
 
-match({history: !__STATIC__?hashHistory:browserHistory, routes}, (error, redirectLocation, renderProps) => {
-  ReactDOM.hydrate(
+match({history: __history__, routes}, (error, redirectLocation, renderProps) => {
+	// console.log(error, redirectLocation,renderProps)
+  ReactDOM.render(
       <Provider store={Store}>
           <Router {...renderProps}/>
       </Provider>,

@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Link ,browserHistory } from 'react-router';
 import { Grid,Button } from 'antd-mobile';
 import { fetchJson } from 'src/utils/fetch';
-import {StaticToast,Svg,PanelNav} from 'src/components/common';
+import {StaticToast,Svg,PanelNav,Piece} from 'src/components/common';
 import {Homeremd,HomeList} from 'src/components/Skeleton';
 import format from "src/utils/format";
 import actions from "src/store/actions";
@@ -62,16 +62,9 @@ class Home extends Component{
 				<ul className="newsong">
 					{
 					!song_Already?<HomeList/>:_newsong.map((k,v)=>{
+						let {album,copyright,artists,alias,...other}=k.song;
 						return (
-							<li className="li-row-item newsong-item" key={k.id}>
-								<Link className="li-row-link">
-									<div className="li-row-flex">
-										<h5 className="name">{k.name}</h5>
-										<p className="brief">{k.alg=="hot_server"?<Svg hash="svg-hot"/>:null}{format.songArtists(k.song.artists,k.name)}</p>
-									</div>
-									<p className="li-row-play-icon"><Svg  hash="svg-play"/></p>
-								</Link>
-							</li>
+							<Piece item={{...other,copyright,picId_str:album.picId_str,custom_alia:alias,custom_ar:artists,blurPicUrl:album.blurPicUrl,index:v,...k}} key={v}/>
 						);
 					})
 					}
@@ -80,7 +73,15 @@ class Home extends Component{
 		);
 	}
 };
-
+// <li className="li-row-item newsong-item" key={k.id}>
+// 								<Link className="li-row-link" to={{pathname:"/song",query:{id:k.id}}}>
+// 									<div className="li-row-flex">
+// 										<h5 className="name">{k.name}</h5>
+// 										<p className="brief">{k.alg=="hot_server"?<Svg hash="svg-hot"/>:null}{format.songArtists(k.song.artists,k.name)}</p>
+// 									</div>
+// 									<p className="li-row-play-icon"><Svg className="c999" hash="svg-play"/></p>
+// 								</Link>
+// 							</li>
 function mapStateToProps(state){
 	const {server_playlist,newsong,playlist_Already,song_Already} = state.homeIndex;
 	// console.log(state.homeIndex)

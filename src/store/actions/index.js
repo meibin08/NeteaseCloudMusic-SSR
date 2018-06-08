@@ -8,10 +8,12 @@
 import homeIndex from "./Home/index";
 import homeHot from "./Home/hot";
 import homeSearch from "./Home/search";
+import songIndex from "./Song";
 
 let actions = Object.assign({},
 	homeIndex,
 	homeHot,
 	homeSearch,
+	songIndex,
 	);
 export default actions;

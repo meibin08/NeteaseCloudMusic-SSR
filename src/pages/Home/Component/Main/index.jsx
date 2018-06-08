@@ -22,9 +22,9 @@ import './Main.scss';
 
 class Main extends Component{
 	_tabs = [
-	  { title: "推荐音乐" ,pathname:"/music/song" },
-	  { title: "热歌榜",pathname:"/music/hot"},
-	  { title: "搜索",pathname:"/music/search"}
+	  { title: "推荐音乐" ,pathname:"/music" },
+	  { title: "热歌榜",pathname:"/hot"},
+	  { title: "搜索",pathname:"/search"}
 	];
 	render(){
 		return ( 
@@ -44,11 +44,12 @@ class Main extends Component{
 	}
 };
 
-function mapStateToProps(state){
+
+let mapStateToProps =(state)=>{
 	return {};
 }; 
 
-function mapDispatchToProps(dispatch){
+let mapDispatchToProps=(dispatch)=>{
 	return {
 		ACTIONS:bindActionCreators(actions,dispatch)
 	};
