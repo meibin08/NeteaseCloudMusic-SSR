@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import format from "src/utils/format";
 import Svg from '../Svg';
 
-
+const _WEBP ='.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp';
 class Piece extends Component {
   _onClick=(item)=>{
   	/*sessionStorage.setItem("nemwxs",JSON.stringify({
@@ -24,11 +24,20 @@ class Piece extends Component {
   	browserHistory.push({pathname:"/song",query:{id:item.id}});
   }
   render() {
-    const {item,isSerial=false} = this.props;
+  	/*
+	   * 参数说明
+	   * @ param {String} isSerial 1= Hot.js 页序号; 2= song.js页 喜欢这首歌的人也听 - 头像
+	  */
+    const {className,item,isSerial=0} = this.props;
+    let newPicUrl = (item.picUrl||"").replace(/\.\w+$/,_WEBP);
     return (
-      <section className="li-row-item hot-item">
+      <section className={classnames("li-row-item hot-item",{[`${className}`]:!!className})} >
 				<div className="li-row-link" onClick={()=>this._onClick(item)}>
-					{!!isSerial&&<p className={classnames("num",{"num-cred":item.index<3})}>{format.n(item.index+1)}</p>}
+					{isSerial===1&&<p className={classnames("num",{"num-cred":item.index<3})}>{format.n(item.index+1)}</p>}
+					{isSerial===2&&<p className="cover u-cover">
+						<img src={newPicUrl} />
+					</p>}
+
 					<div className="li-row-flex">
 						<h5 className="name">{item.name} {item.custom_alia[0]&&<span className="sgalia">({(item.custom_alia[0]||'')})</span>}</h5>
 						<p className="brief">{!item.copyright?<Svg hash="svg-hot"/>:null}{format.songArtists(item.custom_ar,item.name)}</p>

@@ -34,7 +34,7 @@ function Song(state = initStates,action){
 		case LYRIC_BASE:
 			let {songs:{name,ar,al,id}}=action.data;
 			let nemwxs = {
-				content:ar[0].name,
+				content:name,
 				picUrl:al.picUrl,
 				resId:id,
 				picId_str:al.picId_str||al.pic_str,

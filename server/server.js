@@ -13,6 +13,13 @@ module.exports = function (app) {
   proxy.on('error', function(e) {
     logger.error(e);
   });
+  
+  //设置服务端之间的请求头
+  proxy.on('proxyReq', function(proxyReq, req, res, options) {
+
+    proxyReq.setHeader('Referer', 'http://music.163.com');
+    proxyReq.setHeader('Host', 'music.163.com');
+  });
 
 
   // 服务器部署验证

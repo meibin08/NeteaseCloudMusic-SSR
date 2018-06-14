@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Link ,browserHistory } from 'react-router';
 import { Grid,Button } from 'antd-mobile';
 import { fetchJson } from 'src/utils/fetch';
-import {StaticToast,Svg,PanelNav,Piece} from 'src/components/common';
+import {StaticToast,Svg,PanelNav,Piece,RecommendChunk} from 'src/components/common';
 import {Homeremd,HomeList} from 'src/components/Skeleton';
 import format from "src/utils/format";
 import actions from "src/store/actions";
@@ -40,24 +40,15 @@ class Home extends Component{
 		return ( 
 			<div className="i-home">
 				<PanelNav title="推荐歌单"/>
-				<ul className="recommend">
+				<section className="recommend">
 					{
 					!playlist_Already?<Homeremd len={6} />:_playlist.map((k,v)=>{
-						let newPicUrl = k.picUrl.replace(/\.\w+$/,_WEBP);
 						return (
-							<li className="recommend-item" key={k.id}>
-								<Link className="re-link">
-									<div className="re-briefly">
-										<img className="briefly-img" src={newPicUrl} width={122.88} height={122.88} alt={k.name}/>
-									</div>
-									<p className="shadow-suspend"><Svg hash="svg-earphone"/>{format.units(k.playCount)}</p>
-									<p className="re-title">{k.name}</p>
-								</Link>
-							</li>
+							<RecommendChunk key={k.id} item={k} {...this.props}/>
 						);
 					})
 					}
-				</ul>
+				</section>
 				<PanelNav title="最新音乐"/>
 				<ul className="newsong">
 					{

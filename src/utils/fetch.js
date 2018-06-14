@@ -34,16 +34,13 @@ export const fetchJson = (options) => {
 		}
   };
   
-  if(['POST'].indexOf(opts.method.toUpperCase()) >= 0){
+  if(['POST','PUT'].indexOf(opts.method.toUpperCase()) >= 0){
 
   	// 对请求云音乐的请求（服务端渲染、客户端）接口做特殊处理
 		opts.body =  url.match(/\/(serverApi|neteaseMusic)/ig)?querystring.stringify({
       params: cryptoreq.params,
       encSecKey: cryptoreq.encSecKey
     }):jsonConvert(data);
-
-  }else if (['PUT'].indexOf(opts.method.toUpperCase()) >= 0) {
-		opts.body = JSON.stringify(data)
 
   };
 

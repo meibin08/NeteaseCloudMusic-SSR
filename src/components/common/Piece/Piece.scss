@@ -51,6 +51,10 @@
 			color:$base-color-888;
 			margin-left:r(4);
 		}
+    .u-cover{
+      width:r(40);
+      height:r(40);
+    }
 		.num{
 			@include flex-y;
 			width:r(28);

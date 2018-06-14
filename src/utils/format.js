@@ -11,7 +11,10 @@ const format = {
 		if (date.length == 8) {
 		  date = date.substr(0, 4) + '-' + date.substr(4, 2) + '-' + date.substr(6, 2)
 		}
-		date = new Date(date.toString().replace(/-/g, "/"));
+		if( typeof date !== 'number' && date.length <= 20){ //小于20 ，时间格式为  “yyyy-MM-dd hh:mm:ss” 有时分秒
+			date = date.toString().replace(/-/g, "/");
+		};
+		date = new Date(date);
 		var o = {
 		  "M+": date.getMonth() + 1, //月份
 		  "d+": date.getDate(), //日
@@ -32,6 +35,28 @@ const format = {
 		};
 		let result = arr.map((k)=>k.name);
 		return `${result.join(" / ")} - ${name}`;
+	},
+	formatMsgTime:(date)=>{
+		let now = Date.now();
+		var dateTime = new Date(date).getTime();
+		let milliseconds = now - dateTime;
+		let _time = format.date(date,'hh:mm:ss');
+		let Minute = 1000 * 60 * 1 ;//一分钟
+		let Hour = Minute*60 ;//一小时
+		let Day = Hour*24 ;//一天
+		let dayArr = ["","昨","前"];
+
+		if(milliseconds < Minute  ){
+			return "刚刚";
+		} else if( milliseconds <= Hour ){
+			return Math.round(milliseconds / Minute)+"分钟前";
+		} else if(milliseconds  <= Day){
+			return Math.round(milliseconds / Hour)+"小时前";
+		} else if( milliseconds <= Day*15 ){
+			let r =  Math.round(milliseconds / Day)
+			return r <= 2 ? `${dayArr[r]}天 ${_time}`:`${r}天前`;
+		};
+
 	},
 
   // 根据身份证获取出生年月

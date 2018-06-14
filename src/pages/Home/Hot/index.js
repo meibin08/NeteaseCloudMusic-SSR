@@ -51,7 +51,7 @@ class Hot extends Component{
 					!_hot.hot_Already?<HomeList/>:_hot.tracks.map((k,v)=>{
 						let {picUrl,pic_str,...other}=k.al;
 						return (
-							<Piece item={{...other,id:k.id,blurPicUrl:picUrl,picId_str:pic_str,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={true} key={v}/>
+							<Piece item={{...other,id:k.id,blurPicUrl:picUrl,picId_str:pic_str,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={1} key={v}/>
 						);
 					})
 				}
@@ -60,16 +60,7 @@ class Hot extends Component{
 		);
 	}
 };
-// <li className="li-row-item hot-item" key={id}>
-// 								<Link className="li-row-link">
-// 									<p className={classnames("num",{"num-cred":v<3})}>{format.n(v+1)}</p>
-// 									<div className="li-row-flex">
-// 										<h5 className="name">{name} {k.alia[0]&&<span className="sgalia">({(k.alia[0]||'')})</span>}</h5>
-// 										<p className="brief">{!k.copyright?<Svg hash="svg-hot"/>:null}{format.songArtists(k.ar,k.name)}</p>
-// 									</div>
-// 									<p className="li-row-play-icon"><Svg className="fff" hash="svg-play"/></p>
-// 								</Link>
-// 							</li>
+
 let mapStateToProps =(state)=>{
 	const {server_hot} = state.homeHot;
 	return {_hot:server_hot};

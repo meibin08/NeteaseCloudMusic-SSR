@@ -4,6 +4,8 @@
  * @description：网易音乐 -- 项目根路由
  */
 import Home_route from './Home/route';
+import Song_route from './Song/route';
+import Author_route from './Author/route';
 import bridge from 'src/utils/bridge';
 
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
@@ -15,15 +17,8 @@ const routes = {
     indexRoute:{ onEnter: (nextState, replace) => replace('/music') }, //默认重定向到->首页
     childRoutes: [
       ...Home_route,
-      {
-        path: 'song', //歌曲播放
-        getComponent(location, cb) {
-          require.ensure([], (require) => {
-            cb(null, require('./Song'));
-          });
-        },
-        onEnter: () => bridge.doAction('setTitle', { title: '推荐音乐' })
-      },
+      ...Song_route,
+      ...Author_route,
       {
         path: '*',
         getComponent(nextState, callback) {

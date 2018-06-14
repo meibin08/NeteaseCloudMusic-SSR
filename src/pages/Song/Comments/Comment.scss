@@ -1,0 +1,93 @@
+@import 'src/style/index';
+
+
+//精彩评论、模块
+.m-comments{
+	.panel-nav{color:#fff;padding-bottom:r(4)}
+	.comm-li{
+		padding-top:r(10);
+		@include flex;
+		.comm-user{
+			padding:0 r(12);
+			img{
+				width:r(30);
+				height:r(30);
+				border-radius:50%;
+			}
+		}
+		&:not(:last-child){
+			.comm-info{
+				@include borderBottom;
+			}
+		}
+		.comm-info{
+			@include flex-w;
+			padding:0 r(12) r(12) 0;
+			&:not(:last-child){@include borderBottom}
+			.cmt-header{
+				@include flex;
+				line-height:r(20);
+				color:rgba(255,255,255,.3);
+				.cmt-meta{
+					@include flex-w;
+					.nickname{
+						color:rgba(255,255,255,.7);
+					}
+					.time{
+						font-size:r(9);
+					}
+				}
+				.cmt-like{
+					// @include flex-y;
+					.svg-default{
+						width:r(16);
+						height:r(16);
+						vertical-align: top;
+						margin-left:2px;
+					}
+				}
+			}
+			.cmt-content{
+				padding-top:r(6);
+				line-height:r(22);
+				color:#fff;
+				font-size:r(14);
+			}
+		}
+	}
+	.cmt-more{
+		text-align:center;
+		padding:r(18) 0;
+		color:$base-color-999;
+		span{
+			display:inline-block;
+			&:after{
+				content:"";
+				display:inline-block;
+				width:r(7);
+				height:r(7);
+				border:1px solid #fff;
+				border-left-width:0;
+				border-top-width:0;
+				transform:rotate(-45deg) translate(3px,0px);
+				font-size:r(14);
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
