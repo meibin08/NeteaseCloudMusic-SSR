@@ -41,9 +41,9 @@ class Comment extends Component{
 	}).then(res=>{
 		if(res.code == 200){
 			let {hotComments,comments,total}=res;
-			let _c = hotComments.length>=5?comments.slice(0,5):comments;
+			let _c = hotComments.length>=10?[]:comments.slice(0,5);
 			this.setState({
-				hotComments,
+				hotComments:hotComments.slice(0,10),
 				comments:_c,total
 			})
 		}else{

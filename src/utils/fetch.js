@@ -72,7 +72,8 @@ function toJson(resp, options) {
 
 // 请求成功处理
 function resHandler(resData, options) { 
-	console.log(`$$-----------${urlInfo.urlName}:请求耗时----${Date.now() - urlInfo.startTime}ms-------$$`);
+	console.log(`$$-fetch-----------${urlInfo.urlName}:请求耗时----${Date.now() - urlInfo.startTime}ms-------$$`);
+
   // Loading(false);
   if (resData.status && resData.status != 200) {
 	return errorHandler(resData.error, options, resData.status);

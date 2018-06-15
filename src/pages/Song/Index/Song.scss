@@ -146,8 +146,20 @@
 		}
 	}
 }
-
-
+.m-moreLists{
+	&:last-child{
+		padding-bottom:r(40);
+	}
+}
+.simisong-list{
+	.li-row-item{
+		.name{color:#fff}
+		&:after{
+      
+      @include borderBottom($color:rgba(255,255,255,.1));
+    }
+	}
+}
 
 
 

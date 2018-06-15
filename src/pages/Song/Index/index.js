@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import classnames from 'classnames';
 import { Link ,browserHistory } from 'react-router';
 import { fetchJson } from 'src/utils/fetch';
-import {StaticToast,Svg,PanelNav,RecommendChunk} from 'src/components/common';
+import {StaticToast,Svg,PanelNav,RecommendChunk,Piece} from 'src/components/common';
 import {Homeremd} from 'src/components/Skeleton';
 import Comments from '../Comments';
 
@@ -23,7 +23,8 @@ import './Song.scss';
 class Song extends Component{
 	static loadData(option) {
     if (option && option.store) {
-        return option.store.dispatch(actions.player_fetch());
+				let {location:{query}}=option.props;
+        return option.store.dispatch(actions.player_fetch({id:query.id}));
     } else {
         this.props.ACTIONS.player_fetch();
     }
@@ -32,7 +33,9 @@ class Song extends Component{
   	isPlay:true,
   	currentIndex:0,
   	playlists:[],
-  	similar_Already:false
+  	similar_Already:false,
+  	simiSongLists:[],
+  	simiSong_Already:false,
   }
   Audio=null;
 	componentDidMount(){
@@ -40,8 +43,9 @@ class Song extends Component{
 		let options={id:query.id};
 		ACTIONS.player_fetch(options).then((res)=>{
 			this.initAudio(res.data[0].url);
-		});
 			this.simiPlaylist(options.id);
+			this.simiSong(options.id);
+		});
 		ACTIONS.getLyric(options);
 		ACTIONS.song_detail(options);
 	}
@@ -67,6 +71,24 @@ class Song extends Component{
 			if(res.code == 200){
 				let {playlists}=res;
 				this.setState({playlists,similar_Already:true});
+			}else{
+				StaticToast.error(res.msg);
+			};
+		});
+	}
+	//喜欢这首歌的人也听
+	simiSong = (id)=>{
+		fetchJson({
+			type:"post",
+			//喜欢这首歌的人也听 - api
+			url:"/musicApi/neteaseMusic/weapi/discovery/simiSong",
+			data : {
+				songid:id,csrf_token: "",
+			},
+		}).then(res=>{
+			if(res.code == 200){
+				let {songs}=res;
+				this.setState({simiSongLists:songs,simiSong_Already:true});
 			}else{
 				StaticToast.error(res.msg);
 			};
@@ -116,7 +138,8 @@ class Song extends Component{
 	}
 	
 	render(){
-		let {isPlay,currentIndex,playlists,similar_Already}=this.state;
+		let {isPlay,currentIndex,playlists,similar_Already,simiSongLists,
+simiSong_Already}=this.state;
 		let {_playerInfo:{nemwxs},_lyricInfo:{list,lyric_Already}} = this.props;
 		return ( 
 			<div>
@@ -151,12 +174,14 @@ class Song extends Component{
 				</section>
 				<Comments {...this.props}/>
 				{!!playlists.length&&<ContainMusic playlists={playlists} similar_Already={similar_Already} {...this.props}/>}
+				{!!simiSongLists.length&&<MoreSongsMusic simiSongLists={simiSongLists} simiSong_Already={simiSong_Already} {...this.props}/>}
 
 			</div>
 			
 		);
 	}
 };
+
 
 
 const ContainMusic =({similar_Already,playlists,...other})=>(
@@ -174,15 +199,17 @@ const ContainMusic =({similar_Already,playlists,...other})=>(
 	</section>
 );
 
-const MoreSongsMusic = ({similar_Already,playlists,...other})=>(
+
+const MoreSongsMusic = ({simiSong_Already,simiSongLists,...other})=>(
 	<section className="m-moreLists m-moreSongs">
 		<PanelNav className="fff" title="喜欢这首歌的人也听"/>
-		<div className="recommend">
+		<div className="simisong-list">
 			{
-			!similar_Already?<Homeremd len={3} />:playlists.map((k,v)=>{
+			!simiSong_Already?<Homeremd len={3} />:simiSongLists.map((k,v)=>{
+				let {name,album,artists,alias,...other}=k;
 				return (
-					<RecommendChunk className="fff" key={k.id} item={{...k,picUrl:k.coverImgUrl}} {...other}/>
-				);
+					<Piece item={{...other,name,picUrl:album.blurPicUrl,custom_alia:alias,custom_ar:artists,index:v,...k}} isSerial={2} key={v}/>
+				);artists
 			})
 			}
 		</div>

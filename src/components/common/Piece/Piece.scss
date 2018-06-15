@@ -53,7 +53,9 @@
 		}
     .u-cover{
       width:r(40);
-      height:r(40);
+      margin-right:r(10);
+      img{height:r(40);width:r(40)}
+      @include flex-y;
     }
 		.num{
 			@include flex-y;

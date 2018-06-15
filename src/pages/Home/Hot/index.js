@@ -49,9 +49,8 @@ class Hot extends Component{
 				<ul className="hot-list">
 				{
 					!_hot.hot_Already?<HomeList/>:_hot.tracks.map((k,v)=>{
-						let {picUrl,pic_str,...other}=k.al;
 						return (
-							<Piece item={{...other,id:k.id,blurPicUrl:picUrl,picId_str:pic_str,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={1} key={v}/>
+							<Piece item={{...k.al,id:k.id,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={1} key={v}/>
 						);
 					})
 				}

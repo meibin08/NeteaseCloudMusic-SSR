@@ -25,7 +25,7 @@ function Song(state = initStates,action){
 		
 		//获取歌曲的音频信息
 		case SERVER_PLAYER_INFO:
-			let newPlay = {player_Already:true,...action.data};
+			let newPlay = {player_Already:true,...state.server_player_info,...action.data};
 			return Object.assign({},state,{
 				server_player_info:newPlay,
 			});

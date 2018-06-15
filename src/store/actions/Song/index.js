@@ -33,11 +33,11 @@ let Song =  {
 				// console.log(1234,res)
 				if(res.code == 200){
 					let {data}=res;
-					let nemwxs = JSON.parse(sessionStorage.getItem("nemwxs")||"{}");
-					let _data =Object.assign({},(data[0]||{}),{nemwxs});
+					// let nemwxs = JSON.parse(sessionStorage.getItem("nemwxs")||"{}");
+					// let _data =Object.assign({},,{nemwxs});
 					dispatch({
 						type:SERVER_PLAYER_INFO,
-						data:_data
+						data:(data[0]||{})
 					});
 					// return Promise.resolve(res);
 				}else{

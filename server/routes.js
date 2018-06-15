@@ -25,7 +25,7 @@ module.exports = function (app) {
     const routes = createRoutes(_routes);
     res.header("Access-Control-Allow-Origin", req.headers["origin"] || "*");
     match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
-    console.log(error, redirectLocation, renderProps);
+    // console.log(error, redirectLocation, renderProps);
         if (redirectLocation) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search);
         } else if (error) {

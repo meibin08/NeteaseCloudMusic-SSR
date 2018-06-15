@@ -55,7 +55,7 @@ class Home extends Component{
 					!song_Already?<HomeList/>:_newsong.map((k,v)=>{
 						let {album,copyright,artists,alias,...other}=k.song;
 						return (
-							<Piece item={{...other,copyright,picId_str:album.picId_str,custom_alia:alias,custom_ar:artists,blurPicUrl:album.blurPicUrl,index:v,...k}} key={v}/>
+							<Piece item={{...other,copyright,custom_alia:alias,custom_ar:artists,index:v,...k}} key={v}/>
 						);
 					})
 					}
