@@ -18,43 +18,48 @@ import { Icon, Grid } from 'antd-mobile';
 import './Search.scss';
 
 class Search extends Component{
-	constructor(props){
-		super(props);
-    	this.state = {
-    	};
+	state={
+		searchTxt:"",
 	}
+
 	componentDidMount(){
 		let {ACTIONS,_search} = this.props;
 		!_search.list.length&&ACTIONS.search_fetch();
 	}
+	search=()=>{
+		
+	}
 	render(){
 		let {_search:{list}}=this.props;
+		let {searchTxt}=this.state;
 		return ( 
 			<section className="i-search">
 				<form className="i-search-column" action="#" method="get">
 					<p className="inputcover">
-						<input type="text" className="inpuver" placeholder="搜索歌曲、歌手、专辑"/>
+						<input type="text" className="inpuver" value={searchTxt} onChange={()=>this.search()} placeholder="搜索歌曲、歌手、专辑"/>
 						<Svg hash="svg-search"/>
-						<Icon className="cross-circle" type='cross-circle-o' />
+						{!!searchTxt&&<Icon className="cross-circle" type='cross-circle-o' />}
 					</p>
 				</form>
-				<div className="s-hot-column">
-					<h5 className="tit">热门搜索</h5>
-					<section className="s-hot-tag">
-						{list.map((k,v)=>{
-							return (
-								<span key={`${v+k.second}`} className="s-item-tag">{k.first}</span>
-							);
-						})}
-					</section>
-				</div>
-				<ul className="s-hot-history">
-					<li className="hist-item">
-						<p className="time"><Svg href={`${require('./images/icon.svg')}#svg-time`}/></p>
-						<div className="hist-text">热门搜索</div>
-						<p className="close"><Icon className="cross" type='cross' /></p>
-					</li>
-				</ul>
+				<section className="hot-default">
+					<div className="s-hot-column">
+						<h5 className="tit">热门搜索</h5>
+						<section className="s-hot-tag">
+							{list.map((k,v)=>{
+								return (
+									<span key={`${v+k.second}`} className="s-item-tag">{k.first}</span>
+								);
+							})}
+						</section>
+					</div>
+					<ul className="s-hot-history">
+						<li className="hist-item">
+							<p className="time"><Svg href={`${require('./images/icon.svg')}#svg-time`}/></p>
+							<div className="hist-text">热门搜索</div>
+							<p className="close"><Icon className="cross" type='cross' /></p>
+						</li>
+					</ul>
+				</section>
 			</section>
 		);
 	}

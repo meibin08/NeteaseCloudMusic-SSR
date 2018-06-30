@@ -142,7 +142,7 @@ class Song extends Component{
 simiSong_Already}=this.state;
 		let {_playerInfo:{nemwxs},_lyricInfo:{list,lyric_Already}} = this.props;
 		return ( 
-			<div>
+			<div className="songs-page">
 				<section className="song-play">
 					<div className="s-play-chunk" onClick={this.isPlayHandler}>
 						<p className="l-t-logo"><Svg href={require('./images/icon.svg')+`#svg-lt-logo`}/></p>
@@ -172,10 +172,9 @@ simiSong_Already}=this.state;
 					</div>
 					<i className="song-bg" style={nemwxs.picId_str?{backgroundImage:`url(//music.163.com/api/img/blur/${nemwxs.picId_str})`}:{}}></i>
 				</section>
-				<Comments {...this.props}/>
 				{!!playlists.length&&<ContainMusic playlists={playlists} similar_Already={similar_Already} {...this.props}/>}
 				{!!simiSongLists.length&&<MoreSongsMusic simiSongLists={simiSongLists} simiSong_Already={simiSong_Already} {...this.props}/>}
-
+				<Comments {...this.props}/>
 			</div>
 			
 		);

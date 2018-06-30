@@ -37,7 +37,7 @@ function Song(state = initStates,action){
 				content:name,
 				picUrl:al.picUrl,
 				resId:id,
-				picId_str:al.picId_str||al.pic_str,
+				picId_str:al.picId_str||al.pic_str||al.pic,
 				resType:"song",
 				title:name
 			};

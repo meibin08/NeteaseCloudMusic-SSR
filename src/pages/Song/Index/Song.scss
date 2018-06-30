@@ -152,10 +152,10 @@
 	}
 }
 .simisong-list{
+	padding-bottom:r(30);
 	.li-row-item{
-		.name{color:#fff}
+		.li-row-link .name{font-size:r(15);color:#fff}
 		&:after{
-      
       @include borderBottom($color:rgba(255,255,255,.1));
     }
 	}
