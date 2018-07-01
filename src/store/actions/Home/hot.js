@@ -51,10 +51,10 @@ let hot =  {
 			}).then(res=>{
 				// console.log(1234,res)
 				if(res.code == 200){
-					let {playlist,updateTime}=res;
+					let {playlist,updateTime,privileges}=res;
 					dispatch({
 						type:SERVER_HOT_LIST,
-						data:{updateTime,tracks:playlist.tracks},
+						data:{updateTime,tracks:playlist.tracks,privileges},
 					});
 				}else{
 					StaticToast.error(res.error);

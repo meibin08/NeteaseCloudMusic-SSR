@@ -23,6 +23,14 @@ class Piece extends Component {
   	}));*/
   	browserHistory.push({pathname:"/song",query:{id:item.id}});
   }
+  songArtists=(arr=[],name)=>{
+  	if(!arr){
+			return name;
+		};
+		// let result = arr.map((k,v)=>(<span className={v===0&&'name'}>{k.name}</span>));
+		let result = arr.map((k,v)=>k.name);
+		return result.join(" / ")+` - ${name}`;
+  }
   render() {
   	/*
 	   * 参数说明
@@ -30,6 +38,7 @@ class Piece extends Component {
 	  */
     const {className,item,isSerial=0} = this.props;
     let newPicUrl = (item.picUrl||"").replace(/\.\w+$/,_WEBP);
+    let isSQ = item.maxbr>=999000;
     return (
       <section className={classnames("li-row-item hot-item",{[`${className}`]:!!className})} >
 				<div className="li-row-link" onClick={()=>this._onClick(item)}>
@@ -39,13 +48,15 @@ class Piece extends Component {
 					</p>}
 					<div className="li-row-flex">
 						<h5 className="name">{item.name} {item.custom_alia[0]&&<span className="sgalia">({(item.custom_alia[0]||'')})</span>}</h5>
-						<p className="brief">{!!item.copyright?<Svg hash="svg-hot"/>:null}{format.songArtists(item.custom_ar,item.name)}</p>
+						<p className="brief">{!!isSQ?<Svg hash="svg-hot"/>:null}{this.songArtists(item.custom_ar,item.name)}</p>
 					</div>
 					<p className="li-row-play-icon"><Svg className="c999" hash="svg-play"/></p>
 				</div>
 			</section>
     )
   }
-}
+};
+
+		
 
 export default Piece

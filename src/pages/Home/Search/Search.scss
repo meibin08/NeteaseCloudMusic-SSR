@@ -6,7 +6,8 @@
 	background-color:#fbfcfd;
 	.i-search-column{
 		padding:r(15) r(12);
-		@include borderBottom;
+    @include borderBottom($color:#ddd);
+		
 		.inputcover{
 			position:relative;
 			border-radius:30px;
@@ -93,3 +94,40 @@
 
 	}
 }
+
+
+//搜索联想提示
+.s-all-match{
+	.s-match-key{
+		line-height: r(48);
+		margin-left:r(10);
+    padding-right: 10px;
+    font-size: r(15);
+    color: #507daf;
+	}
+	ul{
+		padding-left:r(15);
+	}
+	.recomitem{
+		@include flex;
+		// @include flex-x;
+		line-height: r(45);
+		
+		.svg-default{
+			width:r(17);
+			height:r(17);
+			margin-right:r(7);
+			opacity:.6;
+		}	
+		
+	}
+	.s-fd{
+		font-size:r(15);
+		@include flex-w;
+		@include borderBottom($color:rgba(0,0,0,.1));
+	}
+}
+
+
+
+

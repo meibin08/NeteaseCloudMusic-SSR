@@ -50,7 +50,7 @@ class Hot extends Component{
 				{
 					!_hot.hot_Already?<HomeList/>:_hot.tracks.map((k,v)=>{
 						return (
-							<Piece item={{...k.al,id:k.id,copyright:k.copyright,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={1} key={v}/>
+							<Piece item={{...k.al,id:k.id,maxbr:_hot.privileges[v].maxbr,custom_alia:k.alia,custom_ar:k.ar,index:v,}} isSerial={1} key={v}/>
 						);
 					})
 				}
