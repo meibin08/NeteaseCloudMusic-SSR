@@ -92,7 +92,7 @@ class Search extends Component{
 	}
 	render(){
 		let {_search:{list}}=this.props;
-		let {searchTxt,isSearch,song_Already,searchResult}=this.state;
+		let {searchTxt,isSearch,song_Already,searchResult,allMatch}=this.state;
 
 		return ( 
 			<section className="i-search">
@@ -125,12 +125,16 @@ class Search extends Component{
 					</section>
 					):(
 					isSearch ? <Results song_Already={song_Already} list={searchResult} /> : (<section className="s-all-match">
-						<h4 className="s-match-key s-fd">搜索“ss"</h4>
+						<h4 className="s-match-key s-fd">{`搜索"${searchTxt}"`}</h4>
 						<ul>
-							<li className="recomitem">
-								<p><Svg hash="svg-search"/></p>
-								<p className="s-fd">{`${isSearch}`}</p>
-							</li>
+							{allMatch.map((k,v)=>{
+								return (
+									<li className="recomitem" key={v} onClick={()=>this.tagSearch(k.keyword)}>
+										<p><Svg hash="svg-search"/></p>
+										<p className="s-fd">{k.keyword}</p>
+									</li>
+								);
+							})}
 						</ul>
 					</section>)
 					)}
@@ -142,9 +146,9 @@ const Results =({song_Already,list})=>(
 	<ul className="s-sglst">
 		{
 		!song_Already?<HomeList len={4}/>:list.map((k,v)=>{
-			let {album,privilege:{maxbr},artists,alias=[],...other}=k;
+			let {album,privilege:{maxbr},ar,alias=[],...other}=k;
 			return (
-				<Piece item={{...other,maxbr,custom_alia:alias,custom_ar:artists,index:v,...k}} key={v}/>
+				<Piece item={{...other,maxbr,custom_alia:alias,custom_ar:[ar[0]],index:v,...k}} key={v}/>
 			);
 		})
 		}
