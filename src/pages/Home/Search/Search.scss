@@ -119,12 +119,17 @@
 			margin-right:r(7);
 			opacity:.6;
 		}	
-		
 	}
 	.s-fd{
 		font-size:r(15);
 		@include flex-w;
 		@include borderBottom($color:rgba(0,0,0,.1));
+	}
+}
+//搜索结果
+.s-sglst{
+	.highlight-name{
+		color:#507daf;
 	}
 }
 

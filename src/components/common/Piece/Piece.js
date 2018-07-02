@@ -27,9 +27,8 @@ class Piece extends Component {
   	if(!arr){
 			return name;
 		};
-		// let result = arr.map((k,v)=>(<span className={v===0&&'name'}>{k.name}</span>));
 		let result = arr.map((k,v)=>k.name);
-		return result.join(" / ")+` - ${name}`;
+		return <em><span className="highlight-name">{result.shift()}</span>{result.join(" / ")}{` - ${name}`}</em>;
   }
   render() {
   	/*

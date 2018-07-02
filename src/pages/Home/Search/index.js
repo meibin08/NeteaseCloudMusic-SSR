@@ -53,7 +53,7 @@ class Search extends Component{
 			}
 		}).then(res=>{
 			if(res.code === 200){
-				console.log(res);
+				// console.log(res);
 				let {allMatch=[]}=res.result;
 				this.setState({allMatch});
 				return ;
@@ -70,12 +70,14 @@ class Search extends Component{
 				csrf_token: "",
 				limit:30,
 				type:1,
+				queryCorrect:true,
+				strategy:5,
 				s: this.state.searchTxt,
 				offset:0, //页数 1*30
 			}
 		}).then(res=>{
 			if(res.code === 200){
-				// console.log(res,this.state);
+				console.log(res);
 				let {songs} = res.result;
 				let searchResult = [].concat(this.state.searchResult,songs);
 				this.setState({searchResult,song_Already:true})
@@ -137,12 +139,12 @@ class Search extends Component{
 	}
 };
 const Results =({song_Already,list})=>(
-	<ul className="newsong">
+	<ul className="s-sglst">
 		{
 		!song_Already?<HomeList len={4}/>:list.map((k,v)=>{
-			let {album,mvid,artists,alias,...other}=k;
+			let {album,privilege:{maxbr},artists,alias=[],...other}=k;
 			return (
-				<Piece item={{...other,maxbr:mvid,custom_alia:alias,custom_ar:artists,index:v,...k}} key={v}/>
+				<Piece item={{...other,maxbr,custom_alia:alias,custom_ar:artists,index:v,...k}} key={v}/>
 			);
 		})
 		}
