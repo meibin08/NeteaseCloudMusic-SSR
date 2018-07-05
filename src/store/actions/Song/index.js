@@ -98,11 +98,11 @@ let Song =  {
 				},
 			}).then(res=>{
 				if(res.code == 200){
-					let {lrc}=res;
+					let {lrc={}}=res;
 				// console.log(1234,result)
 					dispatch({
 						type:LYRIC_INFO,
-						data:lrc.lyric
+						data:lrc.lyric||""
 					});
 				}else{
 					StaticToast.error(res.error);

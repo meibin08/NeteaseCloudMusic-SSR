@@ -7,6 +7,9 @@
 import { fetchJson } from 'src/utils/fetch';
 import {StaticToast} from 'src/components/common';
 export const SERVER_SEARCH_LIST="SERVER_SEARCH_LIST";
+export const SEARCH_RESULT="SEARCH_RESULT";
+export const SEARCH_SET_VAL="SEARCH_SET_VAL";
+export const SEARCH_SETTING="SEARCH_SETTING";
 
 
 let search =  {
@@ -33,6 +36,48 @@ let search =  {
 				return Promise.resolve(res);
 			});
 		}
+	},
+	setSearchVal(val){
+		return {
+			type:SEARCH_SET_VAL,
+			data:val
+		}
+	},
+	set(config){
+		return {
+			type:SEARCH_SETTING,
+			data:config
+		}
+	},
+	search(searchTxt){
+		return (dispatch,getState)=>{
+			// let {homeSearch:{searchTxt}} =  getState();
+			return fetchJson({
+				type:"POST",
+				url:`/musicApi/neteaseMusic/weapi/search/get`,
+				data : {
+					csrf_token: "",
+					limit:30,
+					type:1,
+					queryCorrect:true,
+					strategy:5,
+					s: searchTxt,
+					offset:0, //页数 1*30
+				}
+			}).then(res=>{
+				if(res.code === 200){
+					console.log(res);
+					let {songs} = res.result;
+					// let searchResult = [].concat(this.state.searchResult,songs);
+					dispatch({
+						type:SEARCH_RESULT,
+						data:songs,
+					});
+				};
+				res.error&&StaticToast.error(res.error);
+			});
+		}
+		
 	}
 };
 export default search;

@@ -21,10 +21,9 @@ import './Search.scss';
 
 class Search extends Component{
 	state={
-		searchTxt:"",
-		isSearch:false,
-		song_Already:false,
-		searchResult:[],
+		// searchTxt:"",
+		// isSearch:false,
+		// searchResult:[],
 		allMatch:[] //搜索关键字
 	}
 	_query_:null;
@@ -34,22 +33,23 @@ class Search extends Component{
 		!_search.list.length&&ACTIONS.search_fetch();
 	}
 	searchInpuver=(searchTxt)=>{
-		this.setState({searchTxt},()=>{
-			if(this.state.searchTxt !== ''){
-				this._query_();
-			}
-		})
+		let {ACTIONS}=this.props;
+		ACTIONS.set({searchTxt});
+		if(this.state.searchTxt !== ''){
+			this._query_(searchTxt);
+		}
 	}
 	clear=()=>{
-		this.setState({searchTxt:"",isSearch:false});
+		this.props.ACTIONS.set({searchTxt:"",isSearch:false});
 	}
-	_query = ()=>{
-		
+	_query = (val)=>{
+		console.log("val",val)
+		let {searchTxt,ACTIONS}=this.props;
 		fetchJson({
 			type:"POST",
 			url:`/musicApi/neteaseMusic/weapi/search/suggest/keyword`,
 			data : {
-				s: this.state.searchTxt
+				s: searchTxt
 			}
 		}).then(res=>{
 			if(res.code === 200){
@@ -61,38 +61,15 @@ class Search extends Component{
 			res.error&&StaticToast.error(res.error);
 		});
 	}
-	search=()=>{
-		
-		fetchJson({
-			type:"POST",
-			url:`/musicApi/neteaseMusic/weapi/search/get`,
-			data : {
-				csrf_token: "",
-				limit:30,
-				type:1,
-				queryCorrect:true,
-				strategy:5,
-				s: this.state.searchTxt,
-				offset:0, //页数 1*30
-			}
-		}).then(res=>{
-			if(res.code === 200){
-				console.log(res);
-				let {songs} = res.result;
-				let searchResult = [].concat(this.state.searchResult,songs);
-				this.setState({searchResult,song_Already:true})
-				return ;
-			};
-			res.error&&StaticToast.error(res.error);
-		});
-	}
 	//点击标签搜索
 	tagSearch=(searchTxt)=>{
-		this.setState({searchTxt,isSearch:true},()=>{this.search()});
+		let {ACTIONS}=this.props;
+		ACTIONS.set({searchTxt,isSearch:true});
+		this.props.ACTIONS.search(searchTxt);
 	}
 	render(){
-		let {_search:{list}}=this.props;
-		let {searchTxt,isSearch,song_Already,searchResult,allMatch}=this.state;
+		let {_search:{list},_sResult,searchTxt,isSearch}=this.props;
+		let {allMatch}=this.state;
 
 		return ( 
 			<section className="i-search">
@@ -124,7 +101,7 @@ class Search extends Component{
 						</ul>
 					</section>
 					):(
-					isSearch ? <Results song_Already={song_Already} list={searchResult} /> : (<section className="s-all-match">
+					isSearch ? <Results song_Already={_sResult.song_Already} list={_sResult.list} {...this.props}/> : (<section className="s-all-match">
 						<h4 className="s-match-key s-fd">{`搜索"${searchTxt}"`}</h4>
 						<ul>
 							{allMatch.map((k,v)=>{
@@ -142,22 +119,22 @@ class Search extends Component{
 		);
 	}
 };
-const Results =({song_Already,list})=>(
+const Results =({song_Already,list=[]})=>(
 	<ul className="s-sglst">
 		{
-		!song_Already?<HomeList len={4}/>:list.map((k,v)=>{
-			let {album,privilege:{maxbr},ar,alias=[],...other}=k;
+		!song_Already?<HomeList len={4}/>:(list.length>0?list.map((k,v)=>{
+			let {album,privilege:{maxbr=0},ar,alias=[],...other}=k;
 			return (
 				<Piece item={{...other,maxbr,custom_alia:alias,custom_ar:[ar[0]],index:v,...k}} key={v}/>
 			);
-		})
+		}):null)
 		}
 	</ul>
 );
 
 function mapStateToProps(state){
-	const {server_search} = state.homeSearch;
-	return {_search:server_search};
+	const {server_search,searchResult,searchTxt,isSearch} = state.homeSearch;
+	return {_search:server_search,_sResult:searchResult,searchTxt,isSearch};
 }; 
 
 function mapDispatchToProps(dispatch){
