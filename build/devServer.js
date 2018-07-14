@@ -13,9 +13,10 @@ require('../server/express')(app);
 app.use(webpackMiddleware(compiler, { 
 	noInfo: false,
 	publicPath: config.output.publicPath,
-	hot: true,
+	hot: false,
   info:false,
-  progress:true,
+  progress:false,
+  quiet: false,
 	stats: {
 		colors: true,
 		chunks: false
