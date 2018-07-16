@@ -21,7 +21,7 @@ module.exports = {
     ext[mod] = 'commonjs ' + mod
     return ext
   }, {}),
-  
+  target: 'node',
   node: {
     __filename: true,
     __dirname: true
@@ -47,7 +47,6 @@ module.exports = {
       __CLIENT__: false
     })
   ],
-  target: 'node',
   resolve: {
     extensions: ['.js', '.jsx', '.scss','.json','.css'],
     alias: {

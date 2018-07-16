@@ -17,3 +17,26 @@ match({history: __history__, routes}, (error, redirectLocation, renderProps) => 
       document.getElementById('app')
   )
 })
+
+
+
+
+
+/*
+ PPT  静态方法 class static 
+ class Test{
+ 	constructor(x, y) {
+    this.name = "小明";
+    this.age = 26;
+  }
+	static getData(){
+		console.log("static-静态方法,name："+this.name+",age："+this.age+";静态方法不会被实例继承，而是直接通过类");
+	}
+	getData(){
+		console.log("-----普通方法,name："+this.name+",age："+this.age+"------###");
+	}
+ }
+ var A = new Test();
+ A.getData();
+ Test.getData();
+*/

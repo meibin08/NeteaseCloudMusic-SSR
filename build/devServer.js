@@ -25,6 +25,7 @@ app.use(webpackMiddleware(compiler, {
 app.use(logger('dev'));
 app.use(webpackHotMiddleware(compiler));
 require('../server/server')(app);
+require('../server/ejs')(app);
 app.get(/^(?!\/client)\/*/i, function (req, res, next) {
   console.log("dev----:"+req.url)
   res.render('dev');
