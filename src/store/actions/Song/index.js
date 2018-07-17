@@ -65,7 +65,7 @@ let Song =  {
 					csrf_token:""
 				},
 			}).then(res=>{
-				console.log(1234,res)
+				// console.log(1234,res)
 				if(res.code == 200){
 					let {songs}=res;
 					dispatch({

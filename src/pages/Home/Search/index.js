@@ -65,10 +65,11 @@ class Search extends Component{
 	tagSearch=(searchTxt)=>{
 		let {ACTIONS}=this.props;
 		ACTIONS.set({searchTxt,isSearch:true});
-		this.props.ACTIONS.search(searchTxt);
+		ACTIONS.historyPush(searchTxt);
+		ACTIONS.search(searchTxt);
 	}
 	render(){
-		let {_search:{list},_sResult,searchTxt,isSearch}=this.props;
+		let {_search:{list},_sResult,searchTxt,isSearch,_history,ACTIONS}=this.props;
 		let {allMatch}=this.state;
 
 		return ( 
@@ -92,13 +93,23 @@ class Search extends Component{
 								})}
 							</section>
 						</div>
-						<ul className="s-hot-history">
-							<li className="hist-item">
-								<p className="time"><Svg href={`${require('./images/icon.svg')}#svg-time`}/></p>
-								<div className="hist-text">热门搜索</div>
-								<p className="close"><Icon className="cross" type='cross' /></p>
-							</li>
-						</ul>
+						{
+						!!_history.length&&(
+							<ul className="s-hot-history">
+								{
+								_history.map((k,v)=>{
+									return (
+										<li className="hist-item" key={`history`+v}>
+											<p className="time"><Svg href={`${require('./images/icon.svg')}#svg-time`}/></p>
+											<div className="hist-text">{k}</div>
+											<p className="close"><Icon className="cross" type='cross' onClick={()=>ACTIONS.historyDelete(v)}/></p>
+										</li>
+									);
+								})
+								}
+							</ul>
+						)}
+						
 					</section>
 					):(
 					isSearch ? <Results song_Already={_sResult.song_Already} list={_sResult.list} {...this.props}/> : (<section className="s-all-match">
@@ -133,8 +144,8 @@ const Results =({song_Already,list=[]})=>(
 );
 
 function mapStateToProps(state){
-	const {server_search,searchResult,searchTxt,isSearch} = state.homeSearch;
-	return {_search:server_search,_sResult:searchResult,searchTxt,isSearch};
+	const {history,server_search,searchResult,searchTxt,isSearch} = state.homeSearch;
+	return {_search:server_search,_sResult:searchResult,searchTxt,isSearch,_history:history};
 }; 
 
 function mapDispatchToProps(dispatch){

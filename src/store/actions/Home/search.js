@@ -10,6 +10,8 @@ export const SERVER_SEARCH_LIST="SERVER_SEARCH_LIST";
 export const SEARCH_RESULT="SEARCH_RESULT";
 export const SEARCH_SET_VAL="SEARCH_SET_VAL";
 export const SEARCH_SETTING="SEARCH_SETTING";
+export const SEARCH_HISTORY_PUSH="SEARCH_HISTORY_PUSH";
+export const SEARCH_HISTORY_DELETE="SEARCH_HISTORY_DELETE";
 
 
 let search =  {
@@ -78,7 +80,19 @@ let search =  {
 			});
 		}
 		
-	}
+	},
+	historyPush(data){
+		return {
+			type:SEARCH_HISTORY_PUSH,data
+		}
+	},
+	historyDelete(startIndex){
+		return {
+			type:SEARCH_HISTORY_DELETE,startIndex
+		}
+	},
+	
+	
 };
 export default search;
 

@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import { hashHistory,browserHistory, Router,match } from 'react-router';
 import configureStore from "src/store";
+import {persistStore} from 'redux-persist'
 import routes from './pages/routes';
 
 const Store = configureStore(window.__initState__);
+persistStore(Store, {blacklist: []});
 const __history__ = (!__STATIC__?browserHistory:hashHistory);
 
 match({history: __history__, routes}, (error, redirectLocation, renderProps) => {
