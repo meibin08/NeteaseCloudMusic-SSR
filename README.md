@@ -33,7 +33,7 @@
 - [react-isomorphic-boilerplate](https://github.com/chikara-chan/react-isomorphic-boilerplate"react-isomorphic-boilerplate")
 - [douban-movie-react-ssr](https://github.com/ibufu/douban-movie-react-ssr"douban-movie-react-ssr")
 
-### 图片预览
+### 项目图片预览
 
 ![网易云首页,网易云音乐 api,网易云音乐 nodejs,明星,精选,歌单,识别音乐,收藏,分享音乐,音乐互动,高音质,320K,音乐社交](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/01.png)
 ![网易云播放页,网易云音乐 node.js,react reactjs,redux,同构直出 示例,服务端渲染 SSR,音乐,播放器,网易,下载,播放,DJ,免费](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/02.png)
