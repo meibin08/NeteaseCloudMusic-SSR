@@ -33,7 +33,7 @@ module.exports = [
 		}
 	},
 	{
-		path: 'search', //搜索
+		path: 'search', // 搜索
 		component:Main,
 		indexRoute: {
 			getComponent(location, cb) {

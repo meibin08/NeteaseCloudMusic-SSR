@@ -43,7 +43,7 @@ class Hot extends Component{
 				<div className="hot-banner">
 					<div className="hot-zindex">
 						<div className="hot-banner-icon"></div>
-						<p className="hot-update">更新日期:5月24日</p>
+						<p className="hot-update">更新日期:6月18日</p>
 					</div>
 				</div>
 				<ul className="hot-list">
