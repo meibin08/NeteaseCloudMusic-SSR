@@ -1,14 +1,16 @@
 ## 网易云音乐 React同构直出示例  
- 入门示例项目  
- `扫描二维码可以在线查看示例`  
-![alt text](https://meibin08.github.io/react-redux/demo.png)
+ 
+ 在线示例：https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song   
+ `在线示例因网易云音乐API的请求限制，github静态服务器部署，没有node代理请求转发，所以接口请求数据是失败，完整示例请本地运行`
 
 ### 功能点
 - react 服务端渲染 同构直出，解决了SEO优化、减少渲染等待时间（首屏优化）;
-- ！！重点完善了同构数据请求的问题;
-- Skeleton Screen -- 骨架屏
-- 与网易音乐M站版本完全一致的功能;
+- ！！重点完善了同构数据请求发起到数据的接收输出、客户端/服务端请求的兼容、首屏直出等的问题;
+- 网易云 API 的请求代理转发，设置header绕过网易云服务的拦截等;
+- Skeleton Screen -- 骨架屏;
+- 与网易云音乐M站版本完全一致的功能;
 - 推荐音乐、热歌榜、搜索等
+- ！！等你去发现……
 
 ### 安装依赖包 
 - git clone https://github.com/meibin08/NeteaseCloudMusic-SSR.git
@@ -16,12 +18,12 @@
 
 ### 开发环境
 - npm run dev
-- 访问http://localhost/#/
+- 访问http://localhost:8081
 
 ### 生成环境
 - npm run build
 - npm start
-- 访问http://localhost/#/
+- 访问http://localhost:8081
 
 ### 鸣谢
 
@@ -30,4 +32,9 @@
 - [React同构直出优化总结](https://github.com/joeyguo/blog"blog")
 - [react-isomorphic-boilerplate](https://github.com/chikara-chan/react-isomorphic-boilerplate"react-isomorphic-boilerplate")
 - [douban-movie-react-ssr](https://github.com/ibufu/douban-movie-react-ssr"douban-movie-react-ssr")
+
+### 图片预览
+
+![网易云首页,网易云音乐 api,网易云音乐 nodejs,明星,精选,歌单,识别音乐,收藏,分享音乐,音乐互动,高音质,320K,音乐社交](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/01.png)
+![网易云播放页,网易云音乐 node.js,react reactjs,redux,同构直出 示例,服务端渲染 SSR,音乐,播放器,网易,下载,播放,DJ,免费](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/02.png)
 
