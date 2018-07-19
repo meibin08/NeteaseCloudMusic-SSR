@@ -1,14 +1,16 @@
 ## 网易云音乐 React同构直出示例  
- 入门示例项目  
- `扫描二维码可以在线查看示例`  
-![alt text](https://meibin08.github.io/react-redux/demo.png)
+ 
+ 在线示例：https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song   
+ `在线示例因网易云音乐API的请求限制，github静态服务器部署，没有node代理请求转发，所以接口请求数据是失败，完整示例请本地运行`
 
 ### 功能点
 - react 服务端渲染 同构直出，解决了SEO优化、减少渲染等待时间（首屏优化）;
-- ！！重点完善了同构数据请求的问题;
-- Skeleton Screen -- 骨架屏
-- 与网易音乐M站版本完全一致的功能;
+- ！！重点完善了同构数据请求发起到数据的接收输出、客户端/服务端请求的兼容、首屏直出等的问题;
+- 网易云 API 的请求代理转发，设置header绕过网易云服务的拦截等;
+- Skeleton Screen -- 骨架屏;
+- 与网易云音乐M站版本完全一致的功能;
 - 推荐音乐、热歌榜、搜索等
+- ！！等你去发现……
 
 ### 安装依赖包 
 - git clone https://github.com/meibin08/NeteaseCloudMusic-SSR.git
