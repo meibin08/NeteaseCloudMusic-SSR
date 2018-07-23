@@ -12,6 +12,7 @@ export const SEARCH_SET_VAL="SEARCH_SET_VAL";
 export const SEARCH_SETTING="SEARCH_SETTING";
 export const SEARCH_HISTORY_PUSH="SEARCH_HISTORY_PUSH";
 export const SEARCH_HISTORY_DELETE="SEARCH_HISTORY_DELETE";
+export const SEARCH_RESET="SEARCH_RESET";
 
 
 let search =  {
@@ -51,6 +52,13 @@ let search =  {
 			data:config
 		}
 	},
+	clear(data){
+		return {
+			type:SEARCH_RESET,
+			data
+		}
+	},
+	
 	search(searchTxt){
 		return (dispatch,getState)=>{
 			// let {homeSearch:{searchTxt}} =  getState();
@@ -68,7 +76,7 @@ let search =  {
 				}
 			}).then(res=>{
 				if(res.code === 200){
-					console.log(res);
+					// console.log(res);
 					let {songs} = res.result;
 					// let searchResult = [].concat(this.state.searchResult,songs);
 					dispatch({

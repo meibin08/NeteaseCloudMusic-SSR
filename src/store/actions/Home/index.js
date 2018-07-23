@@ -17,7 +17,6 @@ let home =  {
 				//推荐歌单 - api
 				url:"/serverApi/weapi/personalized/playlist",
 				// url:"https://easy-mock.com/mock/5af54595dac0b7495244d48d/sayListen/list2",
-				// url:"http://music.163.com/weapi/personalized/playlist",
 				data : {
 					limit:6,
 					offset: 10,

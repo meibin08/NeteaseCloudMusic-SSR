@@ -21,9 +21,6 @@ import './Search.scss';
 
 class Search extends Component{
 	state={
-		// searchTxt:"",
-		// isSearch:false,
-		// searchResult:[],
 		allMatch:[] //搜索关键字
 	}
 	_query_:null;
@@ -40,7 +37,7 @@ class Search extends Component{
 		}
 	}
 	clear=()=>{
-		this.props.ACTIONS.set({searchTxt:"",isSearch:false});
+		this.props.ACTIONS.clear();
 	}
 	_query = (val)=>{
 		console.log("val",val)
@@ -101,7 +98,7 @@ class Search extends Component{
 									return (
 										<li className="hist-item" key={`history`+v}>
 											<p className="time"><Svg href={`${require('./images/icon.svg')}#svg-time`}/></p>
-											<div className="hist-text">{k}</div>
+											<div className="hist-text" onClick={()=>this.tagSearch(k)}>{k}</div>
 											<p className="close"><Icon className="cross" type='cross' onClick={()=>ACTIONS.historyDelete(v)}/></p>
 										</li>
 									);

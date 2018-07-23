@@ -4,7 +4,7 @@
  * @description：网易音乐 -- 搜索 ----reducers
  */
 
-import {SERVER_SEARCH_LIST,SEARCH_RESULT,SEARCH_SET_VAL,SEARCH_SETTING,SEARCH_HISTORY_PUSH,SEARCH_HISTORY_DELETE} from "../../actions/Home/search";
+import {SERVER_SEARCH_LIST,SEARCH_RESULT,SEARCH_SET_VAL,SEARCH_SETTING,SEARCH_HISTORY_PUSH,SEARCH_RESET,SEARCH_HISTORY_DELETE} from "../../actions/Home/search";
 import update from 'immutability-helper';
 let initStates = {
 	isSearch:false,
@@ -30,6 +30,9 @@ function search(state = initStates,action){
 		case SEARCH_SETTING:
 			return Object.assign({},state,{...action.data});
 			
+		case SEARCH_RESET:
+			return {...initStates,server_search:state.server_search};
+			
 		case SEARCH_RESULT: //搜索结果
 			return Object.assign({},state,{
 				searchResult:{song_Already:true,list:[].concat(state.searchResult.list,action.data)},
@@ -39,11 +42,9 @@ function search(state = initStates,action){
 				searchResult:{song_Already:true,list:[].concat(state.searchResult.list,action.data)},
 			});
 		case SEARCH_HISTORY_PUSH:
-			return update(state, {
-				history: {
-					$push: [action.data],
-				},
-			});
+			return {...state,
+				history:[...new Set([...state.history,action.data])],
+			};
 
 		case SEARCH_HISTORY_DELETE:
 			return update(state, {
