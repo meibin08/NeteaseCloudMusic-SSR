@@ -1,0 +1,25 @@
+@import 'src/style/index';
+
+
+
+.matrix-main{
+	max-width:600px;
+	margin:15% auto 0;
+	text-align:center;
+	width:320px;
+	table{
+		td{
+			border:r(1) solid #ddd;
+			text-align:center;
+			transition:.3s;
+			&.hover{
+				background:#2291a2;
+				color:#fff;
+			}
+		}
+	}
+}
+
+
+
+

@@ -8,13 +8,19 @@ import bridge from 'src/utils/bridge';
 
 module.exports = [
 	{
-    path: 'author', //更多示例
-    /*getComponent(location, cb) {
-      require.ensure([], (require) => {
-        cb(null, require('./Index'));
-      });
-    },*/
-    indexRoute: {
+		path: 'author', //更多示例
+		childRoutes:[
+			{
+				path: 'works', //歌曲播放
+				getComponent(location, cb) {
+					require.ensure([], (require) => {
+						cb(null, require('./Matrix'));
+					});
+				},
+				onEnter: () => bridge.doAction('setTitle', { title: '自定义距阵' })
+			}
+		],
+		indexRoute: {
 			getComponent(location, cb) {
 				require.ensure([], (require) => {
 					cb(null, require('./Index'));
@@ -22,7 +28,7 @@ module.exports = [
 			},
 			onEnter: () => bridge.doAction('setTitle', { title: '更多示例' })
 		}
-  }
+	}
 ];
 
 
@@ -65,19 +71,19 @@ class Matrix extends Component {
 	}
 	renderActiveCube=()=>{
 		let {pointEnd,pointStart}=this.state;
-    let  maxRow = Math.max(pointStart.row, pointEnd.row);
-    let  maxCol = Math.max(pointStart.col, pointEnd.col);
-    this.clearMatrix(()=>{
-    	console.log(maxRow,maxCol)
-	    for(var i=0;i<=maxRow;i++){
-	    	for(var j=0;j<=maxCol;j++){
-	    
-	    		this.state.tableData[i]["children"][j]["selected"] = true;
-	    		this.setState({tableData:this.state.tableData})
-	    	}
+		let  maxRow = Math.max(pointStart.row, pointEnd.row);
+		let  maxCol = Math.max(pointStart.col, pointEnd.col);
+		this.clearMatrix(()=>{
+			console.log(maxRow,maxCol)
+			for(var i=0;i<=maxRow;i++){
+				for(var j=0;j<=maxCol;j++){
+			
+					this.state.tableData[i]["children"][j]["selected"] = true;
+					this.setState({tableData:this.state.tableData})
+				}
 
-	    }
-    })
+			}
+		})
 	}
 	enter=(row,col)=>{
 		let {record}=this.state;

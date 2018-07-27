@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../assets/server'),
     filename: '[name].js',
+    chunkFilename: '[name].[chunkhash:4].js',
     publicPath: '/server/',
     libraryTarget: "commonjs2"
   },

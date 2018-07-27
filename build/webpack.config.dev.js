@@ -9,7 +9,7 @@ var CSS_BROWSERS = require('./postcss-browsers');
 config.devtool = 'eval-source-map';//cheap-module-eval-source-map
 config.entry = {
   index: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?reload=true',
     './src/root.js'
   ]
 };

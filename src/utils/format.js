@@ -51,6 +51,9 @@ const format = {
 		};
 
 	},
+	guid:()=>{
+		return Math.random().toString(36).substr(5).toUpperCase();
+	},
 
   // 根据身份证获取出生年月
  //  getBirthdayByIdCard(idCard) {

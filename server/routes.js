@@ -2,7 +2,7 @@
 
 import { RouterContext, match ,createRoutes} from 'react-router';
 import _routes from '../src/pages/routes';
-import configureStore from '../src/store';
+import Store from '../src/store/server.index';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -21,7 +21,6 @@ module.exports = function (app) {
   //不以client|server开头的请求，进入路由接收处理
   app.get(/^(?!\/client|server)\/*/i,  (req, res, next) =>{
     // const history = createMemoryHistory();
-    const store = configureStore();
     const routes = createRoutes(_routes);
     res.header("Access-Control-Allow-Origin", req.headers["origin"] || "*");
     match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -35,9 +34,9 @@ module.exports = function (app) {
             console.log("去失败页",renderProps)
             // res.redirect("/fail");
         } else if (renderProps) {
-            getReduxPromise(renderProps, store).then(() => {
-                const reduxState = JSON.stringify(store.getState()).replace(/</g, '\\x3c');
-                const html = ReactDOMServer.renderToString(<Provider store={store}>{<RouterContext {...renderProps} />}</Provider>);
+            getReduxPromise(renderProps, Store).then(() => {
+                const reduxState = JSON.stringify(Store.getState()).replace(/</g, '\\x3c');
+                const html = ReactDOMServer.renderToString(<Provider store={Store}>{<RouterContext {...renderProps} />}</Provider>);
                 res.render('index', { html, reduxState });
             }).catch(e => {
                 console.log(46,e);

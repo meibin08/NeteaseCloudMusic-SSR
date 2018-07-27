@@ -13,7 +13,7 @@ require('../server/express')(app);
 app.use(webpackMiddleware(compiler, { 
 	noInfo: false,
 	publicPath: config.output.publicPath,
-	hot: false,
+	hot: true,
   info:false,
   progress:false,
   quiet: false,
