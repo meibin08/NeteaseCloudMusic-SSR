@@ -23,8 +23,8 @@ import './Song.scss';
 class Song extends Component{
 	static loadData(option) {
     if (option && option.store) {
-				let {location:{query}}=option.props;
-        return option.store.dispatch(actions.player_fetch({id:query.id}));
+				let {params}=option.props;
+        return option.store.dispatch(actions.player_fetch({id:params.id}));
     } else {
         this.props.ACTIONS.player_fetch();
     }
@@ -39,8 +39,9 @@ class Song extends Component{
   }
   Audio=null;
 	componentDidMount(){
-		let {ACTIONS,location:{query}} = this.props;
-		let options={id:query.id};
+		let {ACTIONS,params} = this.props;
+	
+		let options={id:params.id};
 		ACTIONS.player_fetch(options).then((res)=>{
 			this.initAudio(res.data[0].url);
 			this.simiPlaylist(options.id);

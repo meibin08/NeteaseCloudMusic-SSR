@@ -32,7 +32,7 @@ class Comment extends Component{
 		url:"/musicApi/neteaseMusic/weapi/v1/resource/comments/get",
 		data : {
 			// offset: 0,
-	    resourceId: this.props.location.query.id,
+	    resourceId: this.props.params.id,
 	    // br:128000,
 	    limit:15,
 	    resourceType:4,

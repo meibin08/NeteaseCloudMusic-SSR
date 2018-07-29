@@ -21,7 +21,7 @@ class Piece extends Component {
 			resType:"song",
 			title:item.name
   	}));*/
-  	browserHistory.push({pathname:"/song",query:{id:item.id}});
+  	browserHistory.push({pathname:`/song/${item.id}`});
   }
   songArtists=(arr=[],name)=>{
   	if(!arr){

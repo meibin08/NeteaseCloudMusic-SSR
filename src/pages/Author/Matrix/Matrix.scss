@@ -3,23 +3,99 @@
 
 
 .matrix-main{
-	max-width:600px;
+	max-width:800px;
 	margin:15% auto 0;
-	text-align:center;
-	width:320px;
+	.cube-editor{
+		position:absolute;
+		top:15%;
+		right:2px;
+	}
+	.cube-layout{
+		text-align:center;
+		width:320px;
+		position:relative;
+	}
 	table{
 		td{
-			border:r(1) solid #ddd;
+			border:r(1) solid #e5e5e5;
+	    background: #f8f8f8;
 			text-align:center;
 			transition:.3s;
-			&.hover{
-				background:#2291a2;
-				color:#fff;
+    	color: #999;
+			&.hover,&.short,&.selected{
+				background:#e8f7fd;
+				color: #88c4dc;
+			}
+			
+		}
+	}
+	.cube-item{
+		position: absolute;
+		background-color: #e8f7fd;
+		text-align: center;
+		color: #88c4dc;
+		cursor: pointer;
+		transition:.3s;
+		&:after{
+			position:absolute;
+			content:"";
+			left:0;top:0;bottom:-1px;right:-1px;
+			border: 1px solid #bdf;
+			z-index:1;
+		}
+		&.active{
+
+			&:after{
+				border-color:#38f;
+				z-index: 3;
 			}
 		}
+		.cube-selected-text{
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left:0;
+			transform: translateY(-50%) scale(.9);
+			font-size:12px;
+		}
+	}
+	.scale{
+		transform: scale(.8);
 	}
 }
 
+
+//预览
+.cube-preview{
+	margin-right:20px;
+	width:377px;
+	border:1px solid #e5e5e5;
+	min-height:667px;
+	background:#fff;
+	.cube-wrap{overflow:hidden;}
+	.preview-cube{
+		position:relative;
+		.p-cube-item{
+			background-color:#f1f1f1;
+			position:absolute;
+			background-repeat: no-repeat;
+	    background-size: cover;
+	    background-position: 50%;
+	    overflow: hidden;
+	    .border{
+	    	position:absolute;
+	    	left:0;
+	    	right:0;
+	    	bottom:0;
+	    	top:0;
+	    	border-width:0;
+	    	border-style:solid;
+	    	border-color:#fff;
+
+	    }
+		}
+	}
+}
 
 
 

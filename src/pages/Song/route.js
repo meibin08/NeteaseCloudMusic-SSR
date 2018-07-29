@@ -8,7 +8,7 @@ import bridge from 'src/utils/bridge';
 
 module.exports = [
 	{
-    path: 'song', //歌曲播放
+    path: 'song/:id', //歌曲播放
     getComponent(location, cb) {
       require.ensure([], (require) => {
         cb(null, require('./Index'));
