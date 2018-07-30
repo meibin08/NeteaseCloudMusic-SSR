@@ -18,7 +18,16 @@ module.exports = [
 					});
 				},
 				onEnter: () => bridge.doAction('setTitle', { title: '自定义距阵' })
-			}
+			},
+			/*{
+				path: 'pdf', 
+				getComponent(location, cb) {
+					require.ensure([], (require) => {
+						cb(null, require('./Pdf'));
+					});
+				},
+				onEnter: () => bridge.doAction('setTitle', { title: 'PDF' })
+			}*/
 		],
 		indexRoute: {
 			getComponent(location, cb) {

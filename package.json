@@ -55,6 +55,8 @@
     "morgan": "^1.9.0",
     "prop-types": "^15.6.1",
     "querystring": "^0.2.0",
+    "react-pdf": "^3.0.5",
+    "react-pdf-js": "^4.0.0-alpha.6",
     "winston": "^2.2.0"
   },
   "devDependencies": {

@@ -9,6 +9,9 @@ module.exports = {
     neteaseMusic:{
     	host: 'music.163.com',
       port: 80
+    },
+    pdf:{
+      host:"static.zhongan.com"
     }
   }
 };
