@@ -230,7 +230,7 @@ class Works extends Component{
 	upload=()=>{
 
 		this.setState(update(this.state,{
-			previewUpdate:format.guid(),
+			previewUpdate:{$set:format.guid()},
 			result:{
 				$set:this.state.result.map((k,v)=>{
 					if(k.selected){
