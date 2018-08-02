@@ -1,4 +1,4 @@
-## 网易云音乐 React同构直出示例 [](https://github.com/meibin08/ "大家好，我是苏南, 前端 网易云音乐") 
+## 网易云音乐 React同构直出示例[.](https://github.com/meibin08/ "大家好，我是苏南, 前端 网易云音乐") 
  
  在线示例：[https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song](https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song "网易云音乐API 网易云音乐Node.js 网易云音乐 · 网易云 · 音乐 react 服务端渲染 降低首屏时间")   
  `在线示例因网易云音乐API的请求限制，github静态服务器部署，没有node代理请求转发，所以接口请求数据是失败，完整示例请本地运行`
