@@ -25,13 +25,7 @@
 - npm start
 - 访问http://localhost:8081
 
-### 鸣谢
 
-- 一直在看同构直出的一些东西，尝试了很多次，最后以失败告终，因为在网上看了很多的文章、示例等，都以概念性的为主，每次看到最后，都是千篇一律----`最后最最重点的服务端数据处理、请求等逻辑没有了`，所以想着弄一个完整的示例，正好偶然的机会又看到了以下几位大神分享的内容，给了很大的启发，非常感谢！
-- [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi"NeteaseCloudMusicApi")
-- [React同构直出优化总结](https://github.com/joeyguo/blog"blog")
-- [react-isomorphic-boilerplate](https://github.com/chikara-chan/react-isomorphic-boilerplate"react-isomorphic-boilerplate")
-- [douban-movie-react-ssr](https://github.com/ibufu/douban-movie-react-ssr"douban-movie-react-ssr")
 
 ### 项目图片预览
 
@@ -46,5 +40,14 @@
 - 如果觉得此示例对你有帮助，可以打赏我一点小费哦～ ^_^ ～
 - 
 ![苏南, 前端,热爱前端开发,5年前端开发工作经验,meibin08@163.com,react爱好者，业余时间爱写一些自己感兴趣的东西，实践自己所想,爱好:跑步、音乐、爬山、看书、羽毛球等,'宝剑锋从磨砺出，梅花得自苦寒来'](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/reward@x1.png?20180803)
+
+
+### 鸣谢
+
+- 一直在看同构直出的一些东西，尝试了很多次，最后以失败告终，因为在网上看了很多的文章、示例等，都以概念性的为主，每次看到最后，都是千篇一律----`最后最最重点的服务端数据处理、请求等逻辑没有了`，所以想着弄一个完整的示例，正好偶然的机会又看到了以下几位大神分享的内容，给了很大的启发，非常感谢！
+- [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi"NeteaseCloudMusicApi")
+- [React同构直出优化总结](https://github.com/joeyguo/blog"blog")
+- [react-isomorphic-boilerplate](https://github.com/chikara-chan/react-isomorphic-boilerplate"react-isomorphic-boilerplate")
+- [douban-movie-react-ssr](https://github.com/ibufu/douban-movie-react-ssr"douban-movie-react-ssr")
 
 
