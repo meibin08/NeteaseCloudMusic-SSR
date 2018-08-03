@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new ParallelUglifyPlugin({
+    /*new ParallelUglifyPlugin({
       cacheDir: '.cache/',
       uglifyJS:{
         output: {
@@ -39,7 +39,7 @@ module.exports = {
           warnings: false
         }
       }
-    }),
+    }),*/
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production")

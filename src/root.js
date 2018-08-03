@@ -12,7 +12,7 @@ import routes from './pages/routes';
 const __history__ = (!__STATIC__?browserHistory:hashHistory);
 
 match({history: __history__, routes}, (error, redirectLocation, renderProps) => {
-	// console.log(error, redirectLocation,renderProps)
+	
 	ReactDOM.render(
 			<Provider store={Store}>
 					<Router {...renderProps}/>

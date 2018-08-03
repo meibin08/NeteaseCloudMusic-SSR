@@ -52,7 +52,7 @@ class Comment extends Component{
 	});
  }
  applink=()=>{
- 	browserHistory.push({pathname:"/author"})
+ 	browserHistory.push({pathname:"/author/works"})
  }
 	render(){
 		let {hotComments,comments,total}=this.state;
