@@ -1,7 +1,7 @@
 {
   "name": "NeteaseCloudMusic-SSR",
   "version": "1.0.1",
-  "description": "Netease music react redux server-side examples",
+  "description": "Netease music react redux server-side examples,@IT·平头哥联盟-首席填坑官∙苏南",
   "main": "app.js",
   "scripts": {
     "start": "node build/app.js",
@@ -37,7 +37,9 @@
     "网易云音乐",
     "网易云",
     "音乐",
-    "网易云音乐nodejs"
+    "网易云音乐nodejs",
+    "首席填坑官∙苏南",
+    "@IT·平头哥联盟-首席填坑官∙苏南"
   ],
   "dependencies": {
     "antd-mobile": "^2.1.10",
