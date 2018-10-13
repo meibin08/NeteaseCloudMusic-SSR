@@ -1,7 +1,8 @@
-## 网易云音乐 React同构直出示例[.](https://github.com/meibin08/ "大家好，我是苏南, 前端 网易云音乐") 
+## 网易云音乐 React同构直出示例[.](https://github.com/meibin08/ "大家好，我是苏南, 前端 网易云音乐,@IT·平头哥联盟,首席填坑官∙苏南,@IT·平头哥联盟-首席填坑官∙苏南") 
  
  在线示例：[https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song](https://meibin08.github.io/NeteaseCloudMusic-SSR/#/music/song "网易云音乐API 网易云音乐Node.js 网易云音乐 · 网易云 · 音乐 react 服务端渲染 降低首屏时间")   
  `在线示例因网易云音乐API的请求限制，github静态服务器部署，没有node代理请求转发，所以接口请求数据是失败，完整示例请本地运行`
+ 了解更多？——[@IT·平头哥联盟](https://honeybadger8.github.io/blog/ "@IT·平头哥联盟-首席填坑官∙苏南")
 
 ## 功能点
 - react 服务端渲染 同构直出，解决了SEO优化、减少渲染等待时间（首屏优化）;
@@ -25,20 +26,21 @@
 - npm start
 - 访问http://localhost:8081
 
-
+## 技术交流
+- 群：912594095、[386485473](https://shang.qq.com/wpa/qunwpa?idkey=d44baf17512787eb0e4f268849a3239d6b9675145a606e21b9a055176bd1c0e2 "React\redux技术交流群")
+- 博客：[@IT·平头哥联盟](https://honeybadger8.github.io/blog/ "@IT·平头哥联盟-首席填坑官∙苏南")
 
 ## 项目图片预览
-![网易云首页,网易云音乐 api,网易云音乐 nodejs,明星,精选,歌单,识别音乐,收藏,分享音乐,音乐互动,高音质,320K,音乐社交](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/01.png)
-![网易云播放页,网易云音乐 node.js,react reactjs,redux,同构直出 示例,服务端渲染 SSR,音乐,播放器,网易,下载,播放,DJ,免费](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/02.png)
+![网易云首页,网易云音乐 api,网易云音乐 nodejs,@IT·平头哥联盟,首席填坑官∙苏南,明星,精选,歌单,识别音乐,收藏,分享音乐,音乐互动,高音质,320K,音乐社交,@IT·平头哥联盟-首席填坑官∙苏南](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/01.png)
+![网易云播放页,网易云音乐 node.js,react reactjs,redux,同构直出 示例,服务端渲染 SSR,音乐,播放器,网易,下载,播放,DJ,免费,@IT·平头哥联盟,首席填坑官∙苏南,@IT·平头哥联盟-首席填坑官∙苏南](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/02.png)
 
 
-## React\redux技术交流群
-- 群：[386485473](https://shang.qq.com/wpa/qunwpa?idkey=d44baf17512787eb0e4f268849a3239d6b9675145a606e21b9a055176bd1c0e2 "React\redux技术交流群")
+
  
 ## 还可以打赏哦～ 
 - 如果觉得此示例对你有帮助，可以打赏我一点小费哦～ ^_^ ～
 - 
-![苏南, 前端,热爱前端开发,5年前端开发工作经验,meibin08@163.com,react爱好者，业余时间爱写一些自己感兴趣的东西，实践自己所想,爱好:跑步、音乐、爬山、看书、羽毛球等,'宝剑锋从磨砺出，梅花得自苦寒来'](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/reward@x1.png?20180803)
+![苏南, 前端,热爱前端开发,5年前端开发工作经验,meibin08@163.com,react爱好者，业余时间爱写一些自己感兴趣的东西，@IT·平头哥联盟,首席填坑官∙苏南,@IT·平头哥联盟-首席填坑官∙苏南实践自己所想,爱好:跑步、音乐、爬山、看书、羽毛球等,'宝剑锋从磨砺出，梅花得自苦寒来'](https://meibin08.github.io/NeteaseCloudMusic-SSR/static/reward@x1.png?20180803)
 
 
 ## 鸣谢
