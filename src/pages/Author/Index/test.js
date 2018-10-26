@@ -12,7 +12,7 @@ import { Link ,browserHistory } from 'react-router';
 import { fetchJson } from 'src/utils/fetch';
 import {StaticToast,Svg,PanelNav} from 'src/components/common';
 import update from 'immutability-helper';
-
+import { List,merge,Map, Set,get,getIn,fromJS } from 'immutable';
 import format from "src/utils/format";
 import actions from "src/store/actions";
 
@@ -44,7 +44,19 @@ class Works extends Component{
   data2.b = 666;
   console.log("我是原始数据 data:",data);
   console.log("我是复制后的数据 data2:",data2);
-		
+  let initState = fromJS({
+  	list:List(),
+  	Obj:{},
+  })
+	const plainSet = Set([ 1, 2, 3, 4 ])
+	let listFromPlainSet = List(plainSet);
+	initState.mergeIn(["Obj"],data);
+	listFromPlainSet.set(1,4);
+	let immutableData2 = Map({});
+	// merge(immutableData2,data2);
+	console.log(initState.get("Obj"))
+
+
 	}
 	render(){
 		let {isPlay,currentIndex}=this.state;
