@@ -12,7 +12,7 @@ import { Link ,browserHistory } from 'react-router';
 import { fetchJson } from 'src/utils/fetch';
 import {StaticToast,Svg,PanelNav} from 'src/components/common';
 import update from 'immutability-helper';
-// import { updateIn,List,merge,Map,Set,get,getIn,fromJS } from 'immutable';
+import { updateIn,List,merge,Map,Set,get,getIn,fromJS } from 'immutable';
 import format from "src/utils/format";
 import actions from "src/store/actions";
 
@@ -26,10 +26,35 @@ class Works extends Component{
 		currentIndex:0
 	}
 	componentDidMount(){
+	
+	let arr = [1,2,3,4,5,6];
+	let obj={
+		name:"immutable",
+		children:{
+			address:"ShenZhen",
+			hobby:"写博客",
+			array:["我不是程序员","切图崽了解一下"],
 
-		localStorage.setItem('test',1234567);
-		let test = localStorage.getItem('test');
-		console.log(typeof test);
+		}
+	};
+	let obj2 = update(obj,{
+		$merge:{
+			arr
+		},
+		children:{
+			array:{
+				$merge:{items:["从前有坐山","山里有个庙"]},
+				$splice:[[0,0,"住着一个小和尚"]]
+
+			}
+		}
+
+	});
+	console.log("原始数据:",obj);
+	console.log("obj2:",obj2);
+	
+
+
 
 	}
 	render(){
