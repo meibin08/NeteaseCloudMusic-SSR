@@ -19,15 +19,6 @@ module.exports = [
 				},
 				onEnter: () => bridge.doAction('setTitle', { title: '自定义距阵' })
 			},
-			{
-				path: 'test', //歌曲播放
-				getComponent(location, cb) {
-					require.ensure([], (require) => {
-						cb(null, require('./Index/test'));
-					});
-				},
-				onEnter: () => bridge.doAction('setTitle', { title: '自定义距阵' })
-			},
 			/*{
 				path: 'pdf', 
 				getComponent(location, cb) {
